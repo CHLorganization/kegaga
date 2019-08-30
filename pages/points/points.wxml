@@ -1,0 +1,26 @@
+<!--pages/points/points.wxml-->
+<view class='pointHeader'>
+  <text class='num'>28</text>
+  <view class='bottom'>
+    <text class='pointText'>当前积分</text>
+    <text class='pointRule'>积分规则</text>
+  </view>
+  <view class='pointRecord' style='background:{{themeColor}}'>积分记录</view>
+</view>
+
+<scroll-view class='scView' scroll-y style="height: {{contentScrollViewHeight}}px;">
+  <view class="dataItemContent" wx:key="id" wx:for="{{20}}" wx:if='{{true}}'>
+    <view class='top'>
+      <text>{{pointData.name}}</text>
+      <text>{{pointData.amount}}</text>
+    </view>
+    <view class='bottom'>
+      <view class='left'>
+        <text>{{pointData.shopName}}</text>
+        <text>{{pointData.time}}</text>
+      </view>
+      <text class='pointsNum'>+{{pointData.points}}</text>
+    </view>
+  </view>
+  <view class='noData' wx:if='{{false}}'>暂无积分记录</view>
+</scroll-view>

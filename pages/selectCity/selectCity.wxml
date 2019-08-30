@@ -1,0 +1,53 @@
+<!--pages/selectcity/selectcity.wxml-->
+<!-- 搜索 -->
+<view class="search-content">
+  <view class='search-icon-view' bindtap='onSearch'>
+    <image class='search-icon' src='../../image/search.png' />
+  </view>
+  <input placeholder="搜索门店" class="search-input" confirm-type="search" bindinput='onSearchInput' value='{{searchValue}}' bindconfirm='onSearch' />
+  <view class='searchDelView' bindtap='onEmptySearchValue'>
+    <image class='image' src='../../image/search_empty.png' wx:if="{{!isEmpty}}" />
+  </view>
+</view>
+
+<!-- 当前定位 -->
+<view class='headerView' wx:if="{{isEmpty}}">
+  <text class='topText'>当前定位</text>
+  <view class='bottom'>
+    <view class='left'>
+      <image class='image' src='../../image/location@2x.png'></image>
+      <text class='text'>{{city}}</text>
+    </view>
+    <view class='rightText' style="color:{{themeColor}}" bindtap='onLocation'>重新定位</view>
+  </view>
+</view>
+
+<view class="contentContainer" style="height: {{scrollViewHeight}}px" wx:if="{{isEmpty}}">
+  <!-- 城市列表 -->
+  <scroll-view scroll-y style="height: {{scrollViewHeight}}px" scroll-into-view="{{alpha}}" bindscroll="scrollBind">
+    <view class="section-item" wx:for="{{datalist}}" wx:key="unique" id="{{item.alphabet}}">
+      <view class="section-item-header">
+        {{item.alphabet}}
+      </view>
+      <view class="section-item-cells" wx:for="{{item.names}}" wx:key="unique" wx:for-item="name" data-name='{{name}}' bindtap='onSeleted'>
+        <view class="section-item-cell">
+          <text>{{name}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 字母选择器 -->
+  <view class="alphanet-selector" style='height:{{scrollViewHeight}}px;'>
+    <view id='alphanet-selector' data-id="selector" catchtouchstart="handlerAlphaTap" catchtouchmove="handlerMove" catchtouchend='handlerEnd'>
+      <view data-ap="{{item.alphabet}}" wx:for="{{datalist}}" wx:key="unique" class="selector-one" style="{{alphabet == item.alphabet? 'color:#FFFFFF; background:'+themeColor:''}}">
+        {{item.alphabet}}
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 显示字母 -->
+<!-- <view wx:if="{{addBg}}" class='show-alpha'>
+  {{alpha}}
+</view> -->

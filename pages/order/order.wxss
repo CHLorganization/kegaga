@@ -1,0 +1,901 @@
+/* pages/order/order.wxss */
+
+/* Page {
+  overflow: hidden;
+} */
+
+/* ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+} */
+
+.headerContent {
+  height: 124rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 36rpx;
+  border-bottom: 1px solid rgba(243, 243, 243, 1);
+}
+
+.headerContent .left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.headerContent .left .top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 4rpx;
+}
+
+.headerContent .left .top .name {
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  line-height: 40rpx;
+  margin-right: 16rpx;
+}
+
+.headerContent .left .bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.headerContent .left .bottom .image {
+  width: 22rpx;
+  height: 26rpx;
+}
+
+.headerContent .left .bottom .address {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 34rpx;
+  margin-left: 4rpx;
+}
+
+.headerContent .left .bottom .time {
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  line-height: 28rpx;
+  margin-left: 28rpx;
+}
+
+/* switch */
+
+.headerContent .switch {
+  position: relative;
+  width: 228rpx;
+  height: 60rpx;
+  background: rgba(247, 247, 247, 1);
+  border-radius: 30rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.headerContent .switch .item {
+  width: 50%;
+  height: 100%;
+  border-radius: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(247, 247, 247, 1);
+  transition-duration: 300ms;
+}
+
+.headerContent .switch .switchAbsolute {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0);
+  border-radius: 30rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.headerContent .switch .switchAbsolute .item {
+  background: rgba(0, 0, 0, 0);
+}
+
+.headerContent .switch .switchAbsolute .item .text {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(172, 172, 172, 1);
+  transition-duration: 300ms;
+}
+
+.headerContent .switch .switchAbsolute .item .text.active {
+  color: rgba(255, 255, 255, 1);
+}
+
+.radio {
+  display: none;
+}
+
+/*滚动菜品*/
+
+.content-container {
+  width: 100%;
+  display: -webkit-flex;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+
+/* 左边滚动 */
+
+.classify-container {
+  width: 166rpx;
+  background: rgba(245, 247, 249, 1);
+}
+
+.classify-container .classify {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.classify-container .classify .dot {
+  min-width: 28rpx;
+  height: 28rpx;
+  border-radius: 14rpx;
+  padding: 0 4rpx;
+  background: rgba(255, 69, 49, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  position: absolute;
+  top: 6rpx;
+  right: 8rpx;
+}
+
+.classify-container .classify.active {
+  background: rgba(255, 255, 255, 1);
+  border-top: 1rpx solid #efefef;
+  border-bottom: 1rpx solid #efefef;
+}
+
+.classify-container .classify .name {
+  text-align: left;
+  pointer-events: none;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 34rpx;
+  margin: 28rpx 32rpx;
+}
+
+/* 右边滚动 */
+
+.goods-container {
+  width: 584rpx;
+  background: #fff;
+}
+
+/* 图片展示 */
+
+.exhibition {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 24rpx;
+}
+
+.exhibition .image {
+  width: 526rpx;
+  height: 268rpx;
+  margin-bottom: 16rpx;
+}
+
+/* search */
+
+.serarch-content {
+  height: 74rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-sizing: border-box;
+  margin-left: 26rpx;
+  margin-right: 26rpx;
+  padding-bottom: 20rpx;
+}
+
+.search-icon-view {
+  width: 70rpx;
+  height: 70rpx;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  background-color: #eee;
+}
+
+.search-icon {
+  margin-left: 15rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.search-input {
+  width: 100%;
+  height: 70rpx;
+  font-size: 28rpx;
+  background-color: #eee;
+  border-top-right-radius: 35rpx;
+  border-bottom-right-radius: 35rpx;
+}
+
+/* 菜品分类item */
+
+.goodsItemHeight {
+  display: flex;
+  flex-direction: column;
+}
+
+.goods-container .title {
+  padding: 10rpx 22rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  line-height: 34rpx;
+  background: rgba(105, 195, 170, 0.3);
+}
+
+.goods-container .goods {
+  height: 208rpx;
+  padding: 16rpx 24rpx;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #f7f7f7;
+}
+
+.goods-container .goods .pic {
+  width: 182rpx;
+  height: 176rpx;
+  margin-right: 18rpx;
+  border-radius: 8rpx;
+  position: relative;
+}
+
+.goods-container .goods .pic .soldout {
+  position: absolute;
+  bottom: 0rpx;
+  left: 0rpx;
+  width: 100%;
+  height: 50rpx;
+  background: rgba(0, 0, 0, 0.6);
+  border-bottom-left-radius: 8rpx;
+  border-bottom-right-radius: 8rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.goods-container .goods .pic .soldout .text {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  line-height: 34rpx;
+}
+
+.goods-container .goods .right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.goods-container .goods .right .top {
+  display: flex;
+  flex-direction: column;
+}
+
+.goods-container .goods .right .name {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(8, 8, 8, 1);
+}
+
+.goods-container .goods .right .desc {
+  font-size: 10px;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 14px;
+  margin-top: 10rpx;
+}
+
+.goods-container .goods .right .bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.goods-container .goods .right .bottom .left {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.goods-container .goods .right .bottom .left .image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.goods-container .goods .right .bottom .left .price {
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(255, 69, 49, 1);
+  line-height: 44rpx;
+}
+
+.goods-container .goods .right .bottom .left .tip {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 34rpx;
+  margin-left: 12rpx;
+}
+
+.goods-container .goods .right .bottom .left .tip.line-through {
+  text-decoration-line: line-through;
+}
+
+.goods-container .goods .right .bottom .bottomRight {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.goods-container .goods .right .bottom .bottomRight .image {
+  width: 58rpx;
+  height: 58rpx;
+}
+
+.goods-container .goods .right .bottom .bottomRight .text {
+  width: 32rpx;
+  height: 58rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 40rpx;
+}
+
+.goods-container .goods .right .bottom .multiple {
+  width: 104rpx;
+  height: 44rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 22rpx;
+  position: relative;
+}
+
+.goods-container .goods .right .bottom .multiple .dot {
+  min-width: 28rpx;
+  height: 28rpx;
+  border-radius: 14rpx;
+  padding: 0 4rpx;
+  background: rgba(255, 69, 49, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  position: absolute;
+  top: -10rpx;
+  right: -14rpx;
+}
+
+.goods-container .goods .right .bottom .multiple .text {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  line-height: 34px;
+}
+
+/* 弹窗 */
+
+.dialogMarsk {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog {
+  width: 582rpx;
+  background: #fafafa;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.dialog .dialogHeader {
+  position: relative;
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog .dialogHeader .text {
+  font-size: 30rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: #080808;
+}
+
+.dialog .dialogHeader .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 90rpx;
+  height: 90rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog .dialogHeader .close .image {
+  width: 34rpx;
+  height: 34rpx;
+}
+
+.dialog .bottom {
+  width: 100%;
+  height: 106rpx;
+  background-color: #f3f3f3;
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dialog .bottom .left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 32rpx;
+  margin-right: 54rpx;
+}
+
+.dialog .bottom .left .price {
+  font-size: 40rpx;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(51, 51, 51, 1);
+  line-height: 56rpx;
+}
+
+.dialog .bottom .left .tip {
+  font-size: 18rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 26rpx;
+}
+
+.dialog .bottom .right {
+  width: 204rpx;
+  height: 70rpx;
+  background: rgba(88, 198, 62, 1);
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 32rpx;
+}
+
+.dialog .bottom .right .text {
+  font-size: 15px;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 21px;
+}
+
+.centerContent {
+  width: 100%;
+  min-height: 204rpx;
+  max-height: 500rpx;
+  background: #fafafa;
+  overflow-y: scroll;
+}
+
+.centerContentView {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.centerContentView .centerItem {
+  display: flex;
+  flex-direction: column;
+  margin-left: 36rpx;
+  margin-bottom: 24rpx;
+  box-sizing: border-box;
+}
+
+.centerContentView .centerItem .name {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 34rpx;
+}
+
+.centerContentView .centerItem .itemContent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.centerContentView .centerItem .itemContent .itemView {
+  height: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(243, 243, 243, 1);
+  border-radius: 26rpx;
+  margin-right: 36rpx;
+  margin-top: 12rpx;
+}
+
+.centerContentView .centerItem .itemContent .itemView .itemName {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  margin-left: 28rpx;
+  margin-right: 28rpx;
+}
+
+/* 购物车 */
+
+.shoppingCart {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.shoppingCart .marskPlaceHolder {
+  flex: 1;
+  width: 100%;
+}
+
+.shoppingCart .tabPlaceHolder {
+  width: 100%;
+  height: 94rpx;
+  background: rgba(255, 255, 255, 1);
+}
+
+.shoppingCart .shoppingCartList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 1);
+}
+
+.shoppingCart .shoppingCartList .header {
+  width: 100%;
+  height: 60rpx;
+  background: rgba(245, 247, 249, 1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  box-sizing: border-box;
+  padding: 0rpx 34rpx;
+}
+
+.shoppingCart .shoppingCartList .header .right {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.shoppingCart .shoppingCartList .header .right .image {
+  width: 22rpx;
+  height: 26rpx;
+  margin-right: 6rpx;
+}
+
+.shoppingCart .shoppingCartList .list {
+  width: 100%;
+  max-height: 734rpx;
+  overflow-y: scroll;
+}
+
+.shoppingCart .shoppingCartList .list .listView {
+  display: flex;
+  flex-direction: column;
+}
+
+.shoppingCart .shoppingCartList .list .listView .item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0rpx 34rpx;
+}
+
+.shoppingCart .shoppingCartList .list .listView .item .dividerline {
+  width: 100%;
+  height: 2rpx;
+  border: 2rpx solid rgb(243, 241, 241);
+}
+
+.shoppingCart .shoppingCartList .list .listView .item .top {
+  width: 100%;
+  height: 110rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid rgba(250, 248, 248, 1);
+}
+
+.shoppingCart .shoppingCartList .list .listView .item .top .desc {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-right: 44rpx;
+}
+
+.shoppingCart .shoppingCartList .list .listView .item .top .desc .name {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(8, 8, 8, 1);
+  line-height: 40rpx;
+}
+
+.shoppingCart .shoppingCartList .list .listView .item .top .desc .tip {
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 28rpx;
+}
+
+.shoppingCart .shoppingCartList .list .listView .item .top .price {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(3, 3, 3, 1);
+  line-height: 40rpx;
+  margin-right: 32rpx;
+}
+
+.shoppingCart .shoppingCartList .list .listView .item .top .operate {
+  width: 148rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.shoppingCart .shoppingCartList .list .listView .item .top .operate .but {
+  width: 58rpx;
+  height: 58rpx;
+}
+
+.shoppingCart .shoppingCartList .list .listView .item .top .operate .text {
+  width: 32rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 40rpx;
+  text-align: center;
+}
+
+/* 购物车tabBar */
+
+.shoppingCartTab {
+  position: relative;
+  width: 100%;
+  height: 94rpx;
+  display: flex;
+  flex-direction: row;
+  z-index: 1001; /* 要高于购物车列表 */
+}
+
+.shoppingCartTab .content {
+  flex: 1;
+  height: 100%;
+  background: rgba(240, 240, 240, 1);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 36rpx;
+}
+
+.shoppingCartTab .content .wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.shoppingCartTab .content .wrap .cartIcon {
+  width: 74rpx;
+  height: 62rpx;
+}
+
+.shoppingCartTab .content .wrap .dot {
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 16rpx;
+  background: rgba(255, 69, 49, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  position: absolute;
+  top: -4rpx;
+  right: -20rpx;
+}
+
+.shoppingCartTab .content .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 30rpx;
+}
+
+.shoppingCartTab .content .left .price {
+  font-size: 38rpx;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(3, 3, 3, 1);
+  line-height: 52rpx;
+}
+
+.shoppingCartTab .content .left .tip {
+  font-size: 18rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 26rpx;
+}
+
+.shoppingCartTab .right {
+  width: 200rpx;
+  height: 94rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shoppingCartTab .right .text {
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 44rpx;
+}
+
+/* 关注门店 */
+
+.followContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 1);
+  padding: 150rpx 40rpx 0;
+}
+
+.followContainer .img {
+  width: 170rpx;
+  height: 164rpx;
+  border-radius: 87rpx;
+}
+
+.followContainer .name {
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(8, 8, 8, 1);
+  line-height: 44rpx;
+  margin-top: 24rpx;
+}
+
+.followContainer .desc {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 34rpx;
+  margin: 16rpx 24rpx 62rpx;
+  text-align: center;
+}
+
+/* 关注门店 */
+
+.btnArea {
+  width: 100%;
+}
+
+.chooseOther {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 34rpx;
+  margin-top: 34rpx;
+  text-decoration: underline;
+}

@@ -1,0 +1,180 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.5",
+	"appid": "wxb1fc6145dae64515",
+	"projectname": "kegaga",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 18,
+			"list": [
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/me/me",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "取餐",
+					"pathName": "pages/takeMeal/takeMeal",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "搜索",
+					"pathName": "pages/search/search",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "管理地址",
+					"pathName": "pages/manageAddress/manageAddress",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新增地址",
+					"pathName": "pages/addAddress/addAddress",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "门店选择",
+					"pathName": "pages/selectShop/selectShop",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "城市选择",
+					"pathName": "pages/selectCity/selectCity",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单结算",
+					"pathName": "pages/orderSettlement/orderSettlement",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "备注",
+					"pathName": "pages/label/label",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "待支付",
+					"pathName": "pages/unpaid/unpaid",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "优惠券",
+					"pathName": "pages/coupon/coupon",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "积分",
+					"pathName": "pages/points/points",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/me/me",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的优惠券",
+					"pathName": "pages/couponTable/couponTable",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "修改交易密码",
+					"pathName": "pages/changePassword/changePassword",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的信息",
+					"pathName": "pages/changeMyInfo/changeMyInfo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "会员充值",
+					"pathName": "pages/recharge/recharge",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单详情",
+					"pathName": "pages/orderDetail/orderDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "申请退款",
+					"pathName": "pages/refund/refund",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

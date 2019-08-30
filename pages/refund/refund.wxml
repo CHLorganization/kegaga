@@ -1,0 +1,44 @@
+<!--pages/refund/refund.wxml-->
+
+<view class='goodsContainer'>
+  <view class='title'>退款商品（共4件)</view>
+  <view class='itemContainer' wx:for='{{4}}'>
+    <view class='desc'>
+      <view class='name'>鲜笋炖肉+时令蔬菜</view>
+      <view class='tip'>（小份/低热量）</view>
+    </view>
+    <view class='quantity'>x1</view>
+  </view>
+</view>
+
+<!-- reason -->
+<view class='reasonContainer'>
+  <textarea placeholder="填写退款原因" placeholder-class='placeholder' class="textarea" maxlength="50" bindinput='onInput' value='{{inputValue}}' />
+  <view class="photoContainer">
+    <view class='wrap'>
+      <image class="image" src='../../image/camera.png' bindtap="chooseImage" />
+    </view>
+    <block wx:for="{{imageList}}" wx:for-item="image">
+      <view class='wrap'>
+        <image class="image" src="{{image}}" data-src="{{image}}" bindtap="previewImage"/>
+        <icon type="clear" size="20" bindtap='deleteImage' class='icon' data-index='{{index}}'/>
+      </view>
+    </block>
+  </view>
+</view>
+
+<!-- 购物车tabBar -->
+<view class='shoppingCartTab'>
+  <view class='content'>
+    <view class='left'>
+      <view class='top'>
+        <view class='price'>￥536</view>
+        <view class='reason'>（部分退款配送费不退回）</view>
+      </view>
+      <view class='tip'>另需配送费￥5</view>
+    </view>
+  </view>
+  <view class='right' style='background:{{themeColor}}' bindtap='toSettlement'>
+    <text class='text'>提交</text>
+  </view>
+</view>

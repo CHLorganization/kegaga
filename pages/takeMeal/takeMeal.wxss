@@ -1,0 +1,383 @@
+/* pages/takeMeal/takeMeal.wxss */
+@import "../../templates/goodsListView/goodsListView.wxss";
+
+.takeMeal {
+  width: 100%;
+  padding: 0 24rpx 96rpx;
+  background: rgba(244, 244, 244, 1);
+}
+
+.orderTab {
+  width: 100%;
+  padding: 0 24rpx 34rpx;
+  background: rgba(244, 244, 244, 1);
+  display: flex;
+  align-items: center;
+}
+
+.orderTab .orderTabBtn {
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(199, 199, 199, 1);
+  margin-right: 46rpx;
+}
+
+.orderTab .active {
+  position: relative;
+  font-size: 40rpx;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(51, 51, 51, 1);
+}
+
+.orderTab .active::after {
+  width: 50%;
+  height: 8rpx;
+  display: block;
+  position: absolute;
+  bottom: -10rpx;
+  left: 0;
+  background: rgba(51, 51, 51, 1);
+  border-radius: 4rpx;
+  content: '';
+  /* border-bottom: 1px solid rgba(51,51,51,1); */
+}
+
+.takeMealBody {
+  background: rgba(244, 244, 244, 1);
+}
+
+/* 订单 */
+
+.order {
+  position: relative;
+  width: 100%;
+  padding: 38rpx 24rpx 0;
+  margin-bottom: 96rpx;
+}
+
+/* .order:nth-last-of-type(1){
+  margin-bottom: 0;
+} */
+
+.processContainer {
+  width: 100%;
+  padding: 0 24rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.processContainer_finish {
+  width: 100%;
+  height: 76rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 4rpx 4rpx 0 rgba(0, 0, 0, 0.1);
+  border-radius: 200rpx;
+}
+
+.processContainer_finish .orderTime {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.processContainer_finish .orderTime .img {
+  width: 30rpx;
+  height: 26rpx;
+  margin: 0 14rpx 0 32rpx;
+}
+
+.processContainer_finish .finalProcess {
+  width: 29%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 1);
+  background: rgba(88, 198, 62, 1);
+  border-radius: 200rpx;
+}
+
+.processContainer_finish .finalProcess .img {
+  width: 34rpx;
+  height: 34rpx;
+  margin-right: 8rpx;
+}
+
+.processContainer_process{
+  width: 100%;
+  position: relative;
+}
+
+.processContainer_process .process_item {
+  height: 76rpx;
+  position: absolute;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(199, 199, 199, 1);
+  background: rgba(255, 255, 255, 1);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 48rpx;
+  border-radius: 60rpx 200rpx 200rpx 50rpx;
+}
+
+.processContainer_process .process_item .img {
+  width: 40rpx;
+  height: 34rpx;
+  margin-right: 18rpx;
+}
+
+.processContainer_process .item0 {
+  width: 30%;
+  z-index: 1000;
+}
+
+.processContainer_process .item1 {
+  width: 53%;
+  z-index: 999;
+}
+
+.processContainer_process .item2 {
+  width: 77%;
+  z-index: 998;
+}
+
+.processContainer_process .item3 {
+  width: 100%;
+  z-index: 997;
+}
+
+.processContainer_process .active {
+  color: rgba(255, 255, 255, 1);
+  /* background:rgba(88,198,62,1); */
+  background: #58c63e;
+}
+
+.processContainer_process .arrow::after {
+  content: '>>>';
+  position: absolute;
+  right: -15rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20rpx;
+  letter-spacing: 4rpx;
+}
+
+.orderBody {
+  width: 100%;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 8rpx 0 rgba(0, 0, 0, 0.1);
+  border-radius: 10rpx 10rpx 0 0;
+  z-index: 996;
+  padding: 80rpx 0 38rpx;
+}
+
+.orderBody .shop {
+  position: relative;
+  display: flex;
+  padding: 0 24rpx;
+  margin-bottom: 32rpx;
+}
+
+.orderBody .shop .imgView {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 6rpx;
+  overflow: hidden;
+}
+
+.orderBody .shop .imgView .img {
+  width: 100%;
+  height: 100%;
+}
+
+.orderBody .shop .shopInfo .shopName {
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  margin-bottom: 4rpx;
+}
+
+.orderBody .shop .shopInfo .shopAddress {
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+}
+
+.orderBody .shop .shopInfo .shopAddress .img {
+  width: 20rpx;
+  height: 24rpx;
+  vertical-align: bottom;
+}
+
+.iconText {
+  position: absolute;
+  right: 24rpx;
+  top: 50%;
+  transform: translateY(-50%); /*垂直居中*/
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(88, 198, 62, 1);
+  background: rgba(88, 198, 62, 0.15);
+  border: 2rpx solid rgba(88, 198, 62, 0.3);
+  border-radius: 24rpx;
+  padding: 8rpx 20rpx;
+}
+
+.iconText_waimai {
+  color: rgba(255, 255, 255, 1);
+  background: rgba(88, 198, 62, 1);
+}
+
+/* 一些通用小类 */
+
+.goodsImgView {
+  width: 100%;
+  height: 144rpx;
+  background: rgba(251, 251, 251, 1);
+  border-radius: 4rpx;
+  box-sizing: border-box;
+  padding: 30rpx 0 26rpx 0;
+  white-space: nowrap;
+}
+
+.goodsImgView .goodsImg {
+  width: 90rpx;
+  height: 88rpx;
+  margin-left: 24rpx;
+  border-radius:2rpx;
+}
+
+.goodsImgView .goodsImg:last-child {
+  margin-right: 24rpx;
+}
+
+.goodsSubtext {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  padding: 30rpx 24rpx;
+}
+
+.goodsSubtext .money {
+  font-size: 28rpx;
+}
+
+.footer {
+  width: 100%;
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  border-top: 4rpx dashed rgba(216, 216, 216, 1);
+  padding: 28rpx 24rpx 0;
+}
+
+.footer .customer {
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  margin-top: 10rpx;
+}
+
+.footer .buttonPart {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 18rpx;
+}
+
+.footerBtn {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(88, 198, 62, 1);
+  border-radius: 10rpx;
+  border: 2rpx solid rgba(88, 198, 62, 1);
+  padding: 8rpx 26rpx;
+  margin-left: 28rpx;
+}
+
+.historyOrder {
+  width: 100%;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10rpx;
+  padding-bottom: 26rpx;
+  margin-bottom: 16rpx;
+}
+
+.historyOrder .header {
+  height: 80rpx;
+  padding: 0 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+}
+
+.historyOrder .header .orderTime {
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  margin-left: 28rpx;
+}
+
+.historyOrder .header .orderProcess {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+}
+
+.historyOrder .header .orderProcess .img {
+  height: 30rpx;
+  width: 30rpx;
+  margin-left: 6rpx;
+}
+
+.historyOrder .footer {
+  padding-top: 0;
+  border: none;
+}
+
+.footer .buttonPart {
+  position: relative;
+  margin-top: 0;
+}
+
+.footer .buttonPart .img {
+  height: 40rpx;
+  width: 132rpx;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.historyOrder .goodsSubtext {
+  padding-bottom: 20rpx;
+}

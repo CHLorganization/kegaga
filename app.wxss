@@ -1,0 +1,102 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+} 
+
+/* page */
+page {
+  background-color: #FFFFFF;
+  height: 100%;
+  font-size: 32rpx;
+  line-height: 1.6;
+  box-sizing: border-box;
+}
+
+.dividerline-1{
+  width: 100%;
+  height: 1rpx;
+  background-color: #F3F3F3;
+}
+
+.dividerline-10{
+  width: 100%;
+  height: 10rpx;
+  background-color: #F3F3F3;
+}
+
+/* 文字单行 */
+.singleLine{
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  align-content: center;
+}
+
+/* 文字两行 */
+.twoLines{
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  align-content: center;
+}
+
+/* 文字三行 */
+.threeLines{
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  align-content: center;
+}
+
+/* 文字中间划线 */
+.line-through {
+  text-decoration-line: line-through;
+}
+
+.drop {
+  width: 0;
+  height: 0;
+  border-radius: 2rpx;
+  border-width: 10rpx 8rpx 0rpx 8rpx;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.radio {
+  display: none;
+}
+
+/* 为了使view的宽高可控 */
+view{ 
+ box-sizing: border-box;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 

@@ -1,0 +1,205 @@
+/* pages/refund/refund.wxss */
+
+/* 菜品 */
+
+.goodsContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 36rpx 36rpx 44rpx 42rpx;
+  border-top: 6rpx solid rgba(244, 244, 244, 1);
+  border-bottom: 10rpx solid rgba(244, 244, 244, 1);
+  box-shadow: 0px 1px 0px 0px rgba(210, 210, 210, 0.5);
+}
+
+.goodsContainer .title {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 34rpx;
+  margin-bottom: 10rpx;
+}
+
+.goodsContainer .itemContainer {
+  margin-top: 18rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.goodsContainer .itemContainer .desc {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-right: 26rpx;
+}
+
+.goodsContainer .itemContainer .desc .name {
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(3, 3, 3, 1);
+  line-height: 36rpx;
+}
+
+.goodsContainer .itemContainer .desc .tip {
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 28rpx;
+  margin-top: 6rpx;
+}
+
+.goodsContainer .itemContainer .quantity {
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(3, 3, 3, 1);
+  line-height: 36rpx;
+}
+
+/* 原因 */
+
+.reasonContainer {
+  margin: 28rpx 16rpx 120rpx 24rpx;
+  background: rgba(246, 246, 246, 1);
+  border-radius: 4rpx;
+  padding: 18rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.reasonContainer .placeholder {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(172, 172, 172, 1);
+  line-height: 40rpx;
+}
+
+.reasonContainer .textarea {
+  height: 92rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 40rpx;
+}
+
+.reasonContainer .photoContainer {
+  margin-top: 20rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.reasonContainer .photoContainer .wrap {
+  width: 134rpx;
+  height: 114rpx;
+  position: relative;
+  padding-right: 18rpx;
+  padding-top: 18rpx;
+}
+
+.reasonContainer .photoContainer .wrap .image {
+  width: 116rpx;
+  height: 96rpx;
+}
+
+.reasonContainer .photoContainer .wrap:last-child {
+  padding-right: 0rpx;
+}
+
+.reasonContainer .photoContainer .wrap .icon{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background:rgba(255,255,255,1);
+  position: absolute;
+  top: 0rpx;
+  right: 0rpx;
+  z-index: 1000;
+}
+
+/* 提交tabBar */
+
+.shoppingCartTab {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  z-index: 1001; /* 要高于购物车列表 */
+}
+
+.shoppingCartTab .content {
+  flex: 1;
+  height: 100%;
+  background: rgba(246, 246, 246, 1);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 36rpx;
+}
+
+.shoppingCartTab .content .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.shoppingCartTab .content .left .top {
+  display: flex;
+  justify-content: row;
+  align-items: center;
+}
+
+.shoppingCartTab .content .left .top .price {
+  font-size: 40rpx;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(51, 51, 51, 1);
+  line-height: 56rpx;
+}
+
+.shoppingCartTab .content .left .top .reason {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 34rpx;
+}
+
+.shoppingCartTab .content .left .tip {
+  font-size: 18rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 26rpx;
+}
+
+.shoppingCartTab .right {
+  width: 200rpx;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shoppingCartTab .right .text {
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 44rpx;
+}

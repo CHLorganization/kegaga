@@ -1,0 +1,204 @@
+/* pages/manageaddress/manageaddress.wxss */
+
+.headerView {
+  display: flex;
+  height: 136rpx;
+  flex-direction: column;
+  border-top: 6rpx solid rgba(244, 244, 244, 1);
+  border-bottom: 6rpx solid rgba(244, 244, 244, 1);
+  box-sizing: border-box;
+  padding: 20rpx 0 0 36rpx;
+}
+
+.headerView .topText {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 34rpx;
+}
+
+.headerView .bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.headerView .bottom .left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.headerView .bottom .left .image {
+  width: 22rpx;
+  height: 28rpx;
+  margin-right: 6rpx;
+}
+
+.headerView .bottom .left .text {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 40rpx;
+}
+
+.headerView .bottom .rightText {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  line-height: 34rpx;
+  text-align: center;
+  padding: 10rpx 36rpx;
+}
+
+/* 收货地址 */
+
+.addressText {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 34rpx;
+  padding-left: 36rpx;
+  padding-top: 20rpx;
+}
+
+/* 滚动 */
+
+.scrollContainer {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.touch-item {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* 内容 */
+
+.content {
+  width: 100%;
+  height: 128rpx;
+  box-sizing: border-box;
+  padding-left: 38rpx;
+  padding-right: 38rpx;
+  border-right: 4rpx solid rgba(255, 69, 49, 1);
+  margin-right: 0;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transform: translateX(200rpx);
+  transform: translateX(200rpx);
+  margin-left: -200rpx;
+}
+
+.content .contentView {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid rgba(250, 248, 248, 1);
+}
+
+.content .left {
+  display: flex;
+  flex-direction: column;
+}
+
+.content .left .addressName {
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  line-height: 40rpx;
+}
+
+.content .left .bottom {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 34rpx;
+}
+
+.content .left .bottom .phone {
+  margin-left: 26rpx;
+}
+
+.content .imageTap {
+  width: 70rpx;
+  height: 70rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.content .imageTap .image {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+/* 删除按钮 */
+
+.del {
+  background-color: rgba(255, 69, 49, 1);
+  width: 200rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 42rpx;
+  -webkit-transform: translateX(200rpx);
+  transform: translateX(200rpx);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.touch-move-active .content, .touch-move-active .del {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.noAddress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.noAddress .image {
+  width: 72rpx;
+  height: 60rpx;
+  margin-top: 266rpx;
+  margin-bottom: 16rpx;
+}
+
+.noAddress .text {
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 40rpx;
+}
+
+/* 添加地址 */
+
+.btnArea {
+  padding: 40rpx;
+}

@@ -1,0 +1,64 @@
+<!--templates/goodsListView/goodsListView.wxml-->
+<!--该方案已不采用，为了国际化只能采用component方案-->
+
+<template name="goodsListView">
+  <view class="goodsListView">
+    <view class="header">
+      商品信息（共4件）
+    </view>
+
+    <view class="body">
+      <view class="goodsItem" wx:for="{{currentOrder.goodsList}}" wx:for-index="i" wx:for-item="good">
+        <image class="goodsImg" src="{{good.img}} " />
+        <view class="goodsInfo">
+          <view class="goodsName">
+            {{good.name}} 
+          </view>
+          <view class="subtext">
+            {{good.subtext}}
+          </view>
+        </view>
+        <view class="num">
+          ×{{good.num}}
+        </view>
+        <view class="discount">
+          ¥{{good.discount}}
+        </view>
+        <view class="money">
+          ¥{{good.money}}
+        </view>
+      </view>
+
+      <view wx:if="{{currentOrder.packing!==0}}" class="packing surCharge">
+        <view class="info">
+          <image class="img" src="../../image/packing.png" />
+          <view class="name">包装费</view>
+        </view>
+        <view class="money">
+          ¥{{currentOrder.packing}}
+        </view>
+      </view>
+      <view wx:if="{{currentOrder.peisong!==0}}" class="peisong surCharge">
+        <view class="info">
+          <image class="img" src="../../image/peisong.png" />
+          <view class="name">配送费</view>
+        </view>
+        <view class="money">
+          ¥{{currentOrder.peisong}}
+        </view>
+      </view>
+    </view>
+
+    <view class="footer">
+      <view class="footerLine"></view>
+      <view class="total">
+        <view class="preferential">
+          已优惠 <text class="money">¥{{currentOrder.preferential}}</text>
+        </view>
+        <view class="totalMoney">
+          小计： <text class="money">¥{{currentOrder.total}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,43 @@
+<!--pages/selectshop/selectshop.wxml-->
+<!-- 头部 -->
+<view class='searchContent'>
+  <view class='locationTap' bindtap='onSelectCity'>
+    <image class='location-image' src='../../image/location.png' />
+    <view class='location-city'>{{city}}</view>
+    <view class='drop' />
+  </view>
+  <!-- 搜索 -->
+  <view class="search-content">
+    <view class='search-icon-view' bindtap='onSearch'>
+      <image class='search-icon' src='../../image/search.png' />
+    </view>
+    <input placeholder="搜索门店" class="search-input" confirm-type="search" bindinput='onSearchInput' value='{{searchValue}}' bindconfirm='onSearch' />
+    <view class='searchDelView' bindtap='onEmptySearchValue'>
+      <image class='image' src='../../image/search_empty.png' wx:if="{{!isEmpty}}" />
+    </view>
+  </view>
+</view>
+<!-- 滚动 -->
+<scroll-view scroll-y style="height:{{scrollViewHeight}}px;">
+  <view class="scroll-content">
+    <view wx:for="{{list}}" wx:key="unique" class="sectionItem" bindtap='onSelected' data-item='{{item}}'>
+      <view class="select" wx:if="{{false}}">
+        <image class="select-icon" src='../../image/selected.png' wx:if="{{item.selected}}" />
+      </view>
+      <view class='right'>
+        <view class='top'>
+          <text class='shopName'>{{item.name}}</text>
+          <image class="canSend" src='../../image/cansend.png' wx:if='{{item.canSend}}' />
+          <image class="canSend" src='../../image/unkai.png' wx:else/>
+        </view>
+        <view class='bottom'>
+          <view class='left'>
+            <view class='addressName'>{{item.local}}</view>
+            <view class='time'>约{{item.time}}分钟</view>
+          </view>
+          <view class='distance'>{{item.distance}}km</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

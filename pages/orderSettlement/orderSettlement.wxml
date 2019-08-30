@@ -1,0 +1,153 @@
+<!--pages/orderSettlement/orderSettlement.wxml-->
+<radio-group class="switchContent" name="switchIndex" bindchange="onSwitch">
+  <label class="outerWrap" style="{{switchIndex == '0'?'border-color:' + themeColor + ';background:white' :''}}">
+    <radio class="radio" value="0" />
+    <view class='innerWrap' style="{{switchIndex == '0'?'border-color:' + themeColorOpacity50 + ';background:white' :''}}">
+      <image class='image' src="../../image/pickUp{{switchIndex == '0'?'_HL':''}}.png" />
+      <text class='text' style="{{switchIndex == '0'?'color:' + themeColor :''}}">门店自取</text>
+    </view>
+  </label>
+  <label class="outerWrap" style="{{switchIndex == '1'?'border-color:' + themeColor + ';background:white' :''}}">
+    <radio class="radio" value="1" />
+    <view class='innerWrap' style="{{switchIndex == '1'?'border-color:' + themeColorOpacity50 + ';background:white' :''}}">
+      <image class='image' src="../../image/delivery{{switchIndex == '1'?'_HL':''}}.png" />
+      <text class='text' style="{{switchIndex == '1'?'color:' + themeColor :''}}">外卖配送</text>
+    </view>
+  </label>
+</radio-group>
+
+<!-- 收货地址 -->
+<view class='addressContainer'>
+  <view class='top'>
+    <view class='shopName'>中心书城店</view>
+    <view class='time' style="background:{{themeColor}}" wx:if="{{switchIndex == '1' && address.name}}">预计12:04送达</view>
+  </view>
+  <view class='bottom' bindtap='toChooseAddress'>
+    <view class='phoneContent' wx:if="{{switchIndex == '0'}}">
+      <image class='image' src="../../image/phone{{isPhoneIconHL?'_HL':''}}.png" />
+      <input class="input" name='phone' placeholder-class="placeholder-class" placeholder="请填写手机号作为自取凭证" type="number" bindinput='onPhoneInput' bindfocus='onPhoneFocus' bindblur='onPhoneBlur' value='{{phone}}' />
+      <view class='phoneNumberTip' wx:if='{{showPhoneTip}}' bindtap='onPhoneNumberTip'>{{phoneNumberTip}}</view>
+    </view>
+    <view class='tip' wx:elif="{{!address.name}}">请选择收货地址</view>
+    <view class='left' wx:else>
+      <view class='cityContent'>
+        <view>配送至</view>
+        <view class='city'>{{address.address}}</view>
+      </view>
+      <view class='address'>{{address.houseNumber}}</view>
+      <view>{{address.name}} （{{address.gender == "0" ? "先生":"女士"}}） {{address.phone}}</view>
+    </view>
+    <image class='arrow' src="../../image/arrowRight.png" />
+  </view>
+</view>
+
+<!-- 商品信息 -->
+<view class='productInfoContainer'>
+  <view class='productText'>商品信息（共4件）</view>
+  <view class='orderContent' wx:for='{{4}}' wx:key='unique'>
+    <image class='image' src="../../image/food.png" />
+    <view class='desc'>
+      <view class='name twoLines'>柠檬罗勒鲜奶酸汤面（大份/轻分量）鲜笋炖肉+时令蔬菜</view>
+      <view class='tip singleLine'>有柠檬粒,低卡量,清汤底（小份/低热量）</view>
+    </view>
+    <view class='right'>
+      <view class='quantity'>x1</view>
+      <view class='delPrice'>¥40</view>
+      <view class='price'>¥40</view>
+    </view>
+  </view>
+  <!-- 包装费 -->
+  <view class='otherFee'>
+    <view class='tip' style="background:{{themeColorOpacity15}}; border-color:{{themeColorOpacity30}}; color:{{themeColor}}">
+      <image class='image' src="../../image/pack.png" />
+      <text>包装费</text>
+    </view>
+    <text>￥5.00</text>
+  </view>
+  <view class='otherFee' wx:if="{{switchIndex == '1'}}">
+    <view class='tip' style="background:{{themeColorOpacity15}}; border-color:{{themeColorOpacity30}}; color:{{themeColor}}">
+      <image class='image' src="../../image/send.png" />
+      <text>配送费</text>
+    </view>
+    <text>￥20.00</text>
+  </view>
+  <view class='totalCost'>
+    <view class='left'>
+      <text>已优惠</text>
+      <text class='price'>¥14</text>
+    </view>
+    <view class='right'>
+      <text>小计:</text>
+      <text class='price'>¥76.00</text>
+    </view>
+  </view>
+</view>
+
+<!-- 备注、支付方式 -->
+<view class='bottomContainer'>
+  <view class='remarkItem' bindtap='toRemark'>
+    <view class='remarkText'>备注</view>
+    <view class='right'>
+      <input class="text singleLine" placeholder-class="placeholder" disabled="{{true}}" placeholder="口味、偏好等要求" value='{{remark}}' />
+      <image class='arrow' src="../../image/arrowRight.png" />
+    </view>
+  </view>
+  <view class='remarkItem margin-top' bindtap='showPayDialog'>
+    <view class='remarkText'>支付方式</view>
+    <view class='right'>
+      <view class='weixinPayText'>{{truePayStyle =='0'?'微信支付':'会员钱包'}}</view>
+      <image class='arrow' src="../../image/arrowRight.png" />
+    </view>
+  </view>
+</view>
+
+<!-- 占位：支付bar -->
+<view class='payBarPlaceHolder' />
+
+<!-- 支付bar -->
+<view class='payBar'>
+  <view class='left'>
+    <view class='price'>￥279.50</view>
+    <view class='size'>共4件商品</view>
+  </view>
+  <view class='payBut' style="background:{{themeColor}}" bindtap='onPay'>支付</view>
+</view>
+
+<!-- 支付方式弹窗 -->
+<view class='payStyle' wx:if="{{isPayDialogShow}}" catchtouchmove='catchtouchmove'>
+  <view class='marskPlaceHolder' catchtap='showPayDialog' />
+  <view class='payDialog' animation="{{animationData}}">
+    <view class="dialogHeader">
+      <text class='text'>支付方式</text>
+      <view class='close' catchtap="showPayDialog">
+        <image class='image' src='../../image/close.png' />
+      </view>
+    </view>
+    <!-- 支付item -->
+    <radio-group name="switchPay" bindchange="onSwitchPay">
+      <label class='payItem'>
+        <radio class="radio" value="0" />
+        <view class='left'>
+          <image class='image' src='../../image/weixinPay.png' />
+          <text>微信支付</text>
+        </view>
+        <icon wx:if="{{payStyle == '0'}}" type="success" size="16" color="{{themeColor}}" class='iconBackground' />
+        <icon wx:else type="circle" size="16" color="#C7C7C7" class='iconBackground' />
+      </label>
+      <label class='payItem'>
+        <radio class="radio" value="1" />
+        <view class='left'>
+          <image class='image' src='../../image/pocket.png' />
+          <text>会员钱包</text>
+          <text class='balance'>（余额：￥1,851.5）</text>
+        </view>
+        <icon wx:if="{{payStyle == '1'}}" type="success" size="16" color="{{themeColor}}" class='iconBackground' />
+        <icon wx:else type="circle" size="16" color="#C7C7C7" class='iconBackground' />
+      </label>
+    </radio-group>
+    <!-- 确定按钮 -->
+    <view class="btnArea">
+      <button type="primary" style="background-color:{{themeColor}}" bindtap="onChoosePayStyle">确认</button>
+    </view>
+  </view>
+</view>

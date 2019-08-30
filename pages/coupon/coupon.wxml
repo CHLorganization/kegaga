@@ -1,0 +1,93 @@
+<!--pages/coupon/coupon.wxml-->
+<view class='contain' style='height:{{windowHeight}}px;'>
+
+  <view class='swiper-tab-content'>
+    <radio-group class="swiper-tab" name="coupon" bindchange="switchTab">
+      <label class="swiper-tab-item {{currentTab === 0 ? 'on' : ''}}">
+        <radio class="radio" value="0" />
+        <text>可用 ({{availableList.length}})</text>
+      </label>
+      <label class="swiper-tab-item {{currentTab === 1 ? 'on' : ''}}">
+        <radio class="radio" value="1" />
+        <text>不可用 ({{unavailableList.length}})</text>
+      </label>
+    </radio-group>
+  </view>
+
+  <swiper class='contain' current='{{currentTab}}' duration="300" bindchange="bindChange">
+    <!-- 可用 -->
+    <swiper-item class='swiper-item-1'>
+      <view class='unUse-content' bindtap='useRedPacket'>
+        <view class='unUse-text'>不使用红包</view>
+        <icon wx:if='{{useRedPacket}}' type="success" size="20" color="{{themeColor}}" bindtap='unUse' class='icon-background' />
+        <icon wx:else type="circle" size="20" color="#C7C7C7" bindtap='unUse' class='icon-background' />
+      </view>
+      <!-- 可用代金券 -->
+      <scroll-view class='scroll-container' scroll-y>
+        <view class='coupon-item' wx:for='{{availableList}}' wx:key="index">
+          <view class="coupon-item-content">
+            <image class='background-image' src='../../image/coupon.png' mode="scaleToFill"></image>
+            <view class="coupon-text-content">
+              <view class='coupon-text-top-content' bindtap='selectCoupon' data-index='{{index}}'>
+                <view class='coupon-text-top-text'>
+                  <text class='coupon-name'>{{item.name}}</text>
+                  <text class='coupon-remark'>{{item.remark}}</text>
+                </view>
+                <icon wx:if='{{item.isSelected}}' type="success" size="20" color="{{themeColor}}" bindtap='unUse' class='icon-background' />
+                <icon wx:else type="circle" size="20" color="#C7C7C7" bindtap='unUse' class='icon-background' />
+              </view>
+              <view class='dividerLine' />
+              <view class='coupon-text-bottom-content'>
+                <view class='coupon-text-bottom-left'>
+                  <text class='coupon-validity'>有效期为{{item.validity}}</text>
+                  <text class='coupon-deadline' wx:if='{{item.isDeadline}}'>即将过期</text>
+                </view>
+                <text class='see-detail' bindtap='seeDetail' data-index='{{index}}'>查看详情 ></text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <!-- 不可用 -->
+    <swiper-item>
+      <scroll-view class='scroll-container' scroll-y>
+        <view class='un-coupon-item' style='opacity:0.7' wx:for='{{unavailableList}}' wx:key="index">
+
+          <view class='coupon-item'>
+            <view class="coupon-item-content">
+              <image class='background-image' src='../../image/coupon.png' mode="scaleToFill"></image>
+              <view class="coupon-text-content">
+                <view class='coupon-text-top-content'>
+                  <view class='coupon-text-top-text'>
+                    <text class='coupon-name'>{{item.name}}</text>
+                    <text class='coupon-remark'>{{item.remark}}</text>
+                  </view>
+                </view>
+                <view class='dividerLine' />
+                <view class='coupon-text-bottom-content'>
+                  <view class='coupon-text-bottom-left'>
+                    <text class='coupon-validity'>有效期为{{item.validity}}</text>
+                    <text class='coupon-deadline' wx:if='{{item.isDeadline}}'>即将过期</text>
+                  </view>
+                  <text class='see-detail'>查看详情 ></text>
+                </view>
+              </view>
+            </view>
+          </view>
+
+          <view class='un-reason-content'>
+            <view class='un-reason'>
+              <icon type="clear" size="10" color="#d8d8d8" />
+              <text class='un-reason-title'>不可用原因</text>
+            </view>
+            <view class='un-reason' wx:for='{{item.unavailable}}' wx:for-index="unavailableIndex" wx:for-item="unavailableItem" wx:key="index">
+              <text class='un-reason-text'>{{unavailableItem}}</text>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+
+</view>

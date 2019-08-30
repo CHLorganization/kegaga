@@ -1,0 +1,209 @@
+Page {
+  overflow: hidden;
+}
+
+/* 搜索 */
+
+.search-content {
+  flex: 1;
+  height: 76rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-left: 36rpx;
+  margin-right: 36rpx;
+  box-sizing: border-box;
+  padding-bottom: 16rpx;
+}
+
+.search-icon-view {
+  width: 64rpx;
+  height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  border-top-left-radius: 30rpx;
+  border-bottom-left-radius: 30rpx;
+  background: rgba(244, 244, 244, 1);
+}
+
+.search-icon {
+  width: 38rpx;
+  height: 38rpx;
+}
+
+.search-input {
+  flex: 1;
+  height: 60rpx;
+  font-size: 28rpx;
+  background: rgba(244, 244, 244, 1);
+  padding-left: 10rpx;
+}
+
+.search-content .searchDelView {
+  width: 56rpx;
+  height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border-top-right-radius: 30rpx;
+  border-bottom-right-radius: 30rpx;
+  background: rgba(244, 244, 244, 1);
+}
+
+.search-content .searchDelView .image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 当前定位 */
+
+.headerView {
+  display: flex;
+  height: 136rpx;
+  flex-direction: column;
+  border-top: 6rpx solid rgba(244, 244, 244, 1);
+  border-bottom: 6rpx solid rgba(244, 244, 244, 1);
+  box-sizing: border-box;
+  padding: 20rpx 0 0 36rpx;
+}
+
+.headerView .topText {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 34rpx;
+}
+
+.headerView .bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.headerView .bottom .left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.headerView .bottom .left .image {
+  width: 22rpx;
+  height: 28rpx;
+  margin-right: 6rpx;
+}
+
+.headerView .bottom .left .text {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 40rpx;
+}
+
+.headerView .bottom .rightText {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  line-height: 34rpx;
+  text-align: center;
+  padding: 10rpx 36rpx;
+}
+
+/* 内容容器 */
+
+.contentContainer {
+  width: 100%;
+  position: relative;
+}
+
+/* 城市列表 */
+.section-item .section-item-header {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 34rpx;
+  padding: 20rpx 0 0 36rpx;
+}
+
+.section-item .section-item-cells .section-item-cell {
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 36rpx;
+  box-sizing: border-box;
+  padding: 12rpx 0 16rpx 0;
+  margin: 0 36rpx 0 74rpx;
+  border-bottom: 2rpx solid rgba(250,248,248,1);
+}
+
+.section-item .section-item-cells .section-item-cell text {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 字母列表 */
+
+.alphanet-selector {
+  position: absolute;
+  top: 0rpx;
+  right: 32rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  box-sizing: border-box;
+}
+
+.bg {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.alphanet-selector .selector-one {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28rpx;
+  height: 28rpx;
+  font-size: 18rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(3, 3, 3, 1);
+  line-height: 26rpx;
+  border-radius: 50%;
+}
+
+/* 不兼容 */
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.show-alpha {
+  width: 150rpx;
+  height: 150rpx;
+  background-color: rgba(0, 0, 0, 0.4);
+  font-size: 50px;
+  color: #fff;
+  text-align: center;
+  line-height: 150rpx;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20rpx;
+}
