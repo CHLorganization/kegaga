@@ -1,0 +1,55 @@
+<!--pages/search/search.wxml-->
+<view class="search-content">
+  <view class='search-icon-view' bindtap='onSearch'>
+    <image class='search-icon' src='../../image/search{{isEmpty?"":"_HL"}}.png'></image>
+  </view>
+  <input class="search-input" placeholder="想吃啥就搜啥" maxlength="30" confirm-type="search" value='{{searchValue}}' bindinput='onSearchInput' bindconfirm='onSearch'></input>
+  <view class='searchDelView' bindtap='onEmptySearchValue'>
+    <image class='image' src='../../image/search_empty.png' wx:if="{{!isEmpty}}" />
+  </view>
+</view>
+
+<scroll-view scroll-y style='height:{{scrollViewHeight}}px' wx:if="{{isKeyShow}}">
+  <view class='search-label'>
+    <text class='text'>历史搜索</text>
+    <view class='lable-content'>
+      <text class='lable-view' wx:for="{{historyKeyList}}" wx:key="id" bindtap="onKeySearch" data-key="{{item}}">{{item}}</text>
+    </view>
+  </view>
+
+  <view class='search-label'>
+    <text class='text'>热门搜索</text>
+    <view class='lable-content'>
+      <text class='lable-view' wx:for="{{hotKeyList}}" wx:key="id" bindtap="onKeySearch" data-key="{{item}}">{{item}}</text>
+    </view>
+  </view>
+</scroll-view>
+
+<scroll-view scroll-y style='height:{{scrollViewHeight}}px' wx:if="{{!isKeyShow}}">
+  <view>
+    <view class="goods" wx:for="{{goods}}" wx:key="id" wx:for-item="item" wx:for-index="index" data-id='{{item.id}}' bindtap="showDialog" data-statu="open">
+      <image class="pic" src="{{item.pic}}">
+        <view class='soldout' wx:if="{{item.numberOrders == 0}}">
+          <text class='text'>已售罄</text>
+        </view>
+      </image>
+      <view class='right'>
+        <view class='top'>
+          <view class="name twoLines">{{item.name}}</view>
+          <view class='desc singleLine'>时令季节的云南鲜笋，配上新西，配上新西，配上新西</view>
+        </view>
+        <view class='bottom'>
+          <view class='left'>
+            <view class='price'>￥{{item.minPrice}}</view>
+            <view class='tip' wx:if="{{item.numberOrders != 0}}">起</view>
+            <view class='tip line-through' wx:else>￥{{item.originalPrice}}</view>
+          </view>
+          <image class='image' wx:if="{{item.numberOrders != 0}}" src='../../image/add_{{themeColorName}}.png' />
+          <view class='multiple' style="background:{{themeColor}}" wx:else>
+            <text class='text'>选规格</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

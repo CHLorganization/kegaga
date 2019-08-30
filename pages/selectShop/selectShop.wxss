@@ -1,0 +1,184 @@
+/* pages/selectshop/selectshop.wxss */
+
+/* 头部 */
+
+.searchContent {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 16rpx;
+  border-bottom: 6rpx solid rgba(244, 244, 244, 1);
+}
+
+.locationTap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.location-image {
+  width: 22rpx;
+  height: 28rpx;
+  margin-left: 36rpx;
+}
+
+.location-city {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(8, 8, 8, 1);
+  line-height: 20px;
+  margin-left: 8rpx;
+  margin-right: 12rpx;
+}
+
+/* 搜索 */
+
+.search-content {
+  flex: 1;
+  height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-left: 32rpx;
+  margin-right: 36rpx;
+}
+
+.search-icon-view {
+  width: 64rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  border-top-left-radius: 30rpx;
+  border-bottom-left-radius: 30rpx;
+  background: rgba(244, 244, 244, 1);
+}
+
+.search-icon {
+  width: 38rpx;
+  height: 38rpx;
+}
+
+.search-input {
+  flex: 1;
+  height: 100%;
+  font-size: 28rpx;
+  background: rgba(244, 244, 244, 1);
+  padding-left: 10rpx;
+}
+
+.search-content .searchDelView {
+  width: 56rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border-top-right-radius: 30rpx;
+  border-bottom-right-radius: 30rpx;
+  background: rgba(244, 244, 244, 1);
+}
+
+.search-content .searchDelView .image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 滚动 */
+
+.scroll-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.sectionItem .select {
+  width: 68rpx;
+  height: 134rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sectionItem .select .select-icon {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.sectionItem .right {
+  width: 100%;
+  margin: 0 40rpx;
+  padding: 26rpx 0;
+  border-bottom: 2rpx solid rgba(250, 248, 248, 1);
+  background-color: white;
+}
+
+.sectionItem .right .top {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.sectionItem .right .top .shopName {
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  line-height: 40rpx;
+}
+
+.sectionItem .right .top .canSend {
+  width: 74rpx;
+  height: 28rpx;
+  margin-left: 20rpx;
+}
+
+.sectionItem .right .bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10rpx;
+}
+
+.sectionItem .right .bottom .left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.sectionItem .right .bottom .left .addressName {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 34rpx;
+}
+
+.sectionItem .right .bottom .left .time {
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 28rpx;
+  margin-left: 20rpx;
+}
+
+.sectionItem .right .bottom .distance {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 34rpx;
+}

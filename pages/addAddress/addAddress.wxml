@@ -1,0 +1,59 @@
+<!--pages/addAddress/addAddress.wxml-->
+<form bindsubmit="formSubmit">
+  <view class="contactView">
+    <view class='leftContainer'>
+      <text>联系人：</text>
+    </view>
+    <view class='right'>
+      <input class="nameInput" name='name' placeholder-class="placeholder-class" placeholder="请填写收货人姓名" value='{{name}}' />
+    </view>
+  </view>
+
+  <view class="contactView">
+    <view class='leftContainer' />
+    <radio-group class="radio-group" name="gender" bindchange="onChangeGender">
+      <label class='gender' style="{{gender == '0'? 'background:'+themeColor+';color:#FFFFFF':''}}">
+        <radio class="radio" value="0" />
+        <text>先生</text>
+      </label>
+      <label class='gender margin-left' style="{{gender == '1'? 'background:'+themeColor+';color:#FFFFFF':''}}">
+        <radio class="radio" value="1" />
+        <text>女士</text>
+      </label>
+    </radio-group>
+  </view>
+
+  <view class="contactView">
+    <view class='leftContainer'>
+      <text>手机号：</text>
+    </view>
+    <view class="right">
+      <input class="nameInput" name='phone' placeholder-class="placeholder-class" placeholder="请填写收货人手机号" type="number" bindinput='onPhoneInput' value='{{phone}}' />
+      <image class='image' src='../../image/search_empty.png' catchtap='onEmptyPhone' wx:if="{{!isEmpty}}" />
+    </view>
+  </view>
+
+  <view class="contactView">
+    <view class='leftContainer'>
+      <text>收货地址：</text>
+    </view>
+    <view class='right'>
+      <input class="nameInput" name='address' placeholder-class="placeholder-class" disabled="{{true}}" placeholder="点击选择" bindtap='chooseLocation' value='{{address}}'>
+      </input>
+      <image class='arrow' src="../../image/arrowRight.png" />
+    </view>
+  </view>
+
+  <view class="contactView">
+    <view class='leftContainer'>
+      <text>门牌号：</text>
+    </view>
+    <view class="right">
+      <input class="nameInput" name='houseNumber' placeholder-class="placeholder-class" placeholder="详细地址，例：（3号楼5层503）" value='{{houseNumber}}'></input>
+    </view>
+  </view>
+
+  <view class="btnArea">
+    <button type="primary" formType="submit" style="background-color:{{themeColor}}">确认</button>
+  </view>
+</form>

@@ -1,0 +1,25 @@
+<!--pages/label/label.wxml-->
+<view class="serarch-content">
+  <textarea placeholder="在这里填写备注哟~" class="search-input" maxlength="50" bindinput='onInput' value='{{inputValue}}' />
+  <text class="currentWordNumber">{{currentWordNumber|0}}/50</text>
+</view>
+
+<view class='label-title-content'>
+  <text class='label-title-content-left'>快捷标签</text>
+  <view class='label-title-content-right' bindtap='emptyLabel' wx:if="{{historyLable.length > 0}}">
+    <image class='image' src="../../image/empty.png" />
+    <text>清空</text>
+  </view>
+</view>
+
+<!-- 标签 -->
+<view class='lable-content'>
+  <view class='lable-view' wx:for="{{historyLable}}" wx:key="{{item}}">
+    <view class="lable-view-button" bindtap="selectedLabel" data-label="{{item}}">{{item}}</view>
+  </view>
+</view>
+
+<!-- 确定按钮 -->
+<view class="btnArea">
+  <button type="primary" style="background-color:{{themeColor}}" bindtap="confirm">确认</button>
+</view>

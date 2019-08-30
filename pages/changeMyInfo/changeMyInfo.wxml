@@ -1,0 +1,48 @@
+<!--pages/changeMyInfo/changeMyInfo.wxml-->
+<form bindsubmit="formSubmit">
+  <view class="contactView">
+    <view class='leftContainer'>
+      <text>姓名</text>
+    </view>
+    <view class='right'>
+      <input class="nameInput" name='name' placeholder-class="placeholder-class" placeholder="请填写姓名" value='{{name}}' />
+    </view>
+  </view>
+
+  <view class="contactView">
+    <view class='leftContainer' />
+    <radio-group class="radio-group" name="gender" bindchange="onChangeGender">
+      <label class='gender' style="{{gender == '0'? 'background:'+themeColor+';color:#FFFFFF':''}}">
+        <radio class="radio" value="0" />
+        <text>先生</text>
+      </label>
+      <label class='gender margin-left' style="{{gender == '1'? 'background:'+themeColor+';color:#FFFFFF':''}}">
+        <radio class="radio" value="1" />
+        <text>女士</text>
+      </label>
+    </radio-group>
+  </view>
+
+  <view class="contactView">
+    <view class='leftContainer'>
+      <text>手机号：</text>
+    </view>
+    <view class="right">
+      <input class="nameInput" name='phone' placeholder-class="placeholder-class" placeholder="请填写手机号" type="number" bindinput='onPhoneInput' value='{{phone}}' />
+      <image class='image' src='../../image/search_empty.png' catchtap='onEmptyPhone' wx:if="{{!isEmpty}}" />
+    </view>
+  </view>
+
+  <view class="contactView">
+    <view class='leftContainer'>
+      <text>生日：</text>
+    </view>
+    <view class="right">
+      <input class="nameInput" name='birthday' placeholder-class="placeholder-class" placeholder="生日，例：（2018-02-26）" value='{{birthday}}'></input>
+    </view>
+  </view>
+
+  <view class="btnArea">
+    <button type="primary" formType="submit" style="background-color:{{themeColor}}">确认</button>
+  </view>
+</form>

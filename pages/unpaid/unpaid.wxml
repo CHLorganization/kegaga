@@ -1,0 +1,90 @@
+<!--pages/unpaid/unpaid.wxml-->
+<view class='unpaidHeader'>
+  <text class='text'>待支付</text>
+  <text class='unpaidTime'>剩余13：28</text>
+</view>
+<!-- 自取地址 -->
+<view class='pickUpAdress' wx:if="{{switchIndex == '0'}}">
+  <text class='shopName'>中心城店</text>
+  <view class='contactShopInfo'>
+    <text class='shopAddress'>地址：福民三路112号三楼3195</text>
+    <view class='right'>
+      <image class='shopAddressImg' src='../../image/shopAddress.png' bindtap='openLocation'/>
+      <view class='divider' style='background:{{themeColor}}' />
+      <image class='contact' src='../../image/contact.png' />
+      <text class='text' style='color:{{themeColor}}' bindtap='onContactShop'>联系商家</text>
+    </view>
+  </view>
+  <view class='orderTime'>下单时间：2018-10-05 18：20</view>
+  <view class='bottom'>
+    <view class='cancel' style='border-color:{{themeColor}};color:{{themeColor}}' bindtap='onCancel'>取消订单</view>
+    <view class='toPay' style='background:{{themeColor}}' bindtap='onPay'>去支付</view>
+  </view>
+</view>
+<!-- 外卖地址 -->
+<view class='pickUpAdress' wx:else>
+  <text class='shopName1'>中心城店</text>
+  <text class='userAddr'>配送地址：奥林匹克大厦，6楼6G彩虹云宝</text>
+  <view class='userInfo'>张潇潇 （先生） 17520460359</view>
+  <view class='bottom'>
+    <view class='cancel' style='border-color:{{themeColor}};color:{{themeColor}}' bindtap='onCancel'>取消订单</view>
+    <view class='toPay' style='background:{{themeColor}}' bindtap='onPay'>去支付</view>
+  </view>
+</view>
+
+<!-- 商品信息 -->
+<view class='productInfoContainer'>
+  <view class='productText'>商品信息（共4件）</view>
+  <view class='orderContent' wx:for='{{4}}' wx:key='unique'>
+    <image class='image' src="../../image/food.png" />
+    <view class='desc'>
+      <view class='name twoLines'>柠檬罗勒鲜奶酸汤面（大份/轻分量）鲜笋炖肉+时令蔬菜</view>
+      <view class='tip singleLine'>有柠檬粒,低卡量,清汤底（小份/低热量）</view>
+    </view>
+    <view class='right'>
+      <view class='quantity'>x1</view>
+      <view class='delPrice'>¥40</view>
+      <view class='price'>¥40</view>
+    </view>
+  </view>
+  <!-- 包装费 -->
+  <view class='otherFee'>
+    <view class='tip' style="background:{{themeColorOpacity15}}; border-color:{{themeColorOpacity30}}; color:{{themeColor}}">
+      <image class='image' src="../../image/pack.png" />
+      <text>包装费</text>
+    </view>
+    <text>￥5.00</text>
+  </view>
+  <view class='otherFee' wx:if="{{switchIndex == '1'}}">
+    <view class='tip' style="background:{{themeColorOpacity15}}; border-color:{{themeColorOpacity30}}; color:{{themeColor}}">
+      <image class='image' src="../../image/send.png" />
+      <text>配送费</text>
+    </view>
+    <text>￥20.00</text>
+  </view>
+  <view class='totalCost'>
+    <view class='left'>微信支付</view>
+    <view class='right'>
+      <text class='price'>¥76.70</text>
+    </view>
+  </view>
+</view>
+
+<!-- 订单信息 -->
+<view class='orderInfo'>
+  <view class='orderNumber'>
+    <view>订单号：{{orderNumber}}</view>
+    <view style='color:{{themeColor}}' bindtap='onCopy'>复制</view>
+  </view>
+  <view class='orderTime' wx:if="{{switchIndex == '1'}}">下单时间：2018-10-05 18：20</view>
+  <view class='remarkInfo'>备注信息：不打包</view>
+  <view class='contactShopInfo' wx:if="{{switchIndex == '1'}}">
+    <text class='shopAddress'>门店信息：福民三路112号三楼3195</text>
+    <view class='right'>
+      <image class='shopAddressImg' src='../../image/shopAddress.png' bindtap='openLocation'/>
+      <view class='divider' style='background:{{themeColor}}' />
+      <image class='contact' src='../../image/contact.png' />
+      <text class='text' style='color:{{themeColor}}' bindtap='onContactShop'>联系商家</text>
+    </view>
+  </view>
+</view>

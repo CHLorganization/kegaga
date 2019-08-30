@@ -1,0 +1,45 @@
+<!--pages/manageaddress/manageaddress.wxml-->
+<view class='headerView'>
+  <text class='topText'>当前定位</text>
+  <view class='bottom'>
+    <view class='left'>
+      <image class='image' src='../../image/location@2x.png'></image>
+      <text class='text'>{{recommend}}</text>
+    </view>
+    <view class='rightText' style="color:{{themeColor}}" bindtap='onLocation'>重新定位</view>
+  </view>
+</view>
+
+<scroll-view class="scrollContainer" style="height:{{scrollViewHeight}}px" scroll-y wx:if="{{!isNoAddress}}">
+  <view class="addressText">收货地址</view>
+  <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{items}}" wx:key="id">
+
+    <view class="content">
+      <view class='contentView' bindtap="chooseAddress" data-item='{{item}}'>
+        <view class='left'>
+          <view class='addressName'>{{item.content.address}}{{item.content.houseNumber}}</view>
+          <view class='bottom'>
+            <text>{{item.content.name}}{{item.content.gender == "0"? "（先生）":"（女士）"}}</text>
+            <text class='phone'>{{item.content.phone}}</text>
+          </view>
+        </view>
+        <view class='imageTap' catchtap="editAddress" data-item='{{item}}'>
+          <image class='image' src='../../image/editAddress.png' />
+        </view>
+      </view>
+    </view>
+
+    <view class="del" catchtap="delAddress" data-index="{{index}}">删除</view>
+
+  </view>
+</scroll-view>
+
+<view class="noAddress" style="height:{{scrollViewHeight}}px" wx:if="{{isNoAddress}}">
+  <image class='image' src='../../image/noAddress.png'></image>
+  <text class='text'>暂无地址信息</text>
+  <text class='text'>请点击底部按钮添加地</text>
+</view>
+
+<view class="btnArea">
+  <button type="primary" style="background-color:{{themeColor}}" bindtap="addAddress">+ 添加地址</button>
+</view>

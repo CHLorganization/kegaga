@@ -1,0 +1,63 @@
+<!--components/goodsListView/goodsListView.wxml-->
+<view class="goodsListView">
+  <view class="header">
+    {{staticText.goodsInfo}}（{{staticText.num[0]}}{{currentOrder.num}}{{staticText.num[1]}}）
+  </view>
+
+  <view class="body">
+    <view class="goodsItem" wx:for="{{currentOrder.goodsList}}" wx:for-index="i" wx:for-item="good">
+      <image class="goodsImg" src="{{good.img}} " />
+      <view class="goodsInfo">
+        <view class="goodsName">
+          {{good.name}} 
+        </view>
+        <view class="subtext">
+          {{good.subtext}}
+        </view>
+      </view>
+      <view class="num">
+        ×{{good.num}}
+      </view>
+      <view class="discount">
+        ¥{{good.discount}}
+      </view>
+      <view class="money">
+        ¥{{good.money}}
+      </view>
+    </view>
+
+    <view wx:if="{{currentOrder.packing!==0}}" class="packing surCharge">
+      <view class="info" style="background:{{surCharge_bgColor}}26">
+        <image class="img" src="../../image/packing.png" />
+        <view class="name">{{staticText.packing}}</view>
+      </view>
+      <view class="money">
+        ¥{{currentOrder.packing}}
+      </view>
+    </view>
+    <view wx:if="{{currentOrder.peisong!==0}}" class="peisong surCharge">
+      <view class="info" style="background:{{surCharge_bgColor}}26">
+        <image class="img" src="../../image/peisong.png" />
+        <view class="name">{{staticText.peisong}}</view>
+      </view>
+      <view class="money">
+        ¥{{currentOrder.peisong}}
+      </view>
+    </view>
+  </view>
+
+  <view class="footer">
+    <view class="footerLine"></view>
+    <view class="total">
+      <view wx:if="{{ListViewType===0}}" class="preferential">
+        {{staticText.preferential}} <text class="money">¥{{currentOrder.preferential}}</text>
+      </view>
+      <view wx:if="{{ListViewType===1}}" class="WeChatPayName">
+        {{staticText.WeChatPay}}
+      </view>
+      <view class="totalMoney">
+        {{staticText.totalMoney}}： <text class="money">¥{{currentOrder.total}}</text>
+      </view>
+    </view>
+  </view>
+</view>

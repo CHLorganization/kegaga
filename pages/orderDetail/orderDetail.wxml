@@ -1,0 +1,87 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class="orderDetail">
+  <view class="orderFinal" style="background:#58C63E" wx:if="{{thisOrder.finalProcess=='已完成'}}">
+    <image class="img" src="../../image/finish.png" /> 已完成
+  </view>
+  <view class="orderFinal" style="background:#999999" wx:if="{{thisOrder.finalProcess=='已取消'}}">
+    <image class="img" src="../../image/cancel.png" /> 已取消
+  </view>
+
+  <view class="header{{thisOrder.finalProcess? ' finished' : ''}}{{thisOrder.finalProcess=='已取消' ? ' canceled' : ''}}">
+    <view class="tangshiPart headerTop" wx:if="{{thisOrder.type===0}}">
+      取餐号
+      <view class="takeNum"> 265809 </view>
+    </view>
+    <view class="waiamiPart headerTop" wx:if="{{thisOrder.type===1}}">
+      <view class="shopName">中心逆天城</view>
+      <view class="shopAddress">配送地址：奥林匹克大厦，6楼6G彩虹云宝</view>
+      <view class="costumer">张潇潇 （先生） 17520460359</view>
+      <view class="reachTime">预计12:04送达</view>
+    </view>
+
+
+    <view class="tangshiPart2 headerBottom" wx:if="{{thisOrder.type===0}}">
+      <view class="left">
+        <view class="shopName">中心逆天城</view>
+        <view class="shopAddress">地址：福民三路112号三楼3195</view>
+        <view class="orderTime">下单时间：2018-10-05 18：20</view>
+      </view>
+      <view class="right">
+        <image class="img" src="../../image/location.png" />
+        <text style="margin: 0 8rpx;">|</text>
+        <image class="img" src="../../image/contactShop.png" />
+        <text style="margin-left:6rpx;">联系商家</text>
+      </view>
+      <image class="imgRefund" src="../../image/contactShop.png" bindtap='showRefundDialog' wx:if="{{thisOrder.finalProcess=='已完成'}}" />
+
+    </view>
+    <view class="waimaiPart2 headerBottom" wx:if="{{thisOrder.type===1}}">
+      <view class="left">
+        <view class="deliveryWay">配送方式：顺丰配送</view>
+        <view class="rider">配送骑手：林俊杰</view>
+      </view>
+      <view class="right" style="align-self:flex-end;">
+        <image class="img" src="../../image/contactShop.png" />
+        <text style="margin-left:6rpx;">联系骑手</text>
+      </view>
+      <image class="imgRefund" src="../../image/contactShop.png" bindtap='showRefundDialog' wx:if="{{thisOrder.finalProcess=='已完成'}}" style="top:30rpx;" />
+
+    </view>
+
+  </view>
+
+  <goodsListView currentOrder="{{thisOrder}}" ListViewType="1"></goodsListView>
+
+  <view class="footer">
+    <view class="orderNum item">
+      订单号: 14141414
+      <view class="copy" style="color:#58C63E">复制</view>
+    </view>
+    <view class="makeOrderTime item" wx:if="{{thisOrder.type===1}}">
+      下单时间：2018-10-05 18：20
+    </view>
+    <view class="remark item">
+      备注信息:不打包
+    </view>
+    <view class="shopAddress item" wx:if="{{thisOrder.type===1}}">
+      门店信息：福民三路112号三楼3195
+      <view class="right">
+        <image class="img" src="../../image/location.png" />
+        <text style="margin: 0 8rpx;">|</text>
+        <image class="img" src="../../image/contactShop.png" />
+        <text style="margin-left:6rpx;">联系商家</text>
+      </view>
+    </view>
+    <view class="againOrderBtn" wx:if="{{thisOrder.finalProcess!==''}}">
+      再来一单
+    </view>
+  </view>
+</view>
+
+ <!-- 退款弹窗 -->
+  <view class='refundStyle' wx:if="{{isRefundDialogShow}}" catchtouchmove='catchtouchmove'>
+    <view class='marskPlaceHolder' catchtap='showRefundDialog' />
+    <view class='refundDialog' animation="{{animationData}}">
+      <view class="item" catchtap='onRefund'>申请退款</view>
+    </view>
+  </view>

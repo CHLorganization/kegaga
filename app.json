@@ -1,0 +1,64 @@
+{
+  "pages": [
+    "pages/order/order",
+    "pages/takeMeal/takeMeal",
+    "pages/me/me",
+    "pages/search/search",
+    "pages/manageAddress/manageAddress",
+    "pages/addAddress/addAddress",
+    "pages/selectShop/selectShop",
+    "pages/selectCity/selectCity",
+    "pages/orderSettlement/orderSettlement",
+    "pages/label/label",
+    "pages/coupon/coupon",
+    "pages/unpaid/unpaid",
+    "pages/orderDetail/orderDetail",
+    "pages/refund/refund",
+    "pages/points/points",
+    "pages/couponTable/couponTable",
+    "pages/changePassword/changePassword",
+    "pages/changeMyInfo/changeMyInfo",
+    "pages/recharge/recharge"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "gaga鲜语",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#C2C2C5",
+    "selectedColor": "#76C1C7",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/order/order",
+        "text": "点单",
+        "iconPath": "image/order.png",
+        "selectedIconPath": "image/order_HL.png"
+      },
+      {
+        "pagePath": "pages/takeMeal/takeMeal",
+        "text": "取餐",
+        "iconPath": "image/takeMeal.png",
+        "selectedIconPath": "image/takeMeal_HL.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "image/me.png",
+        "selectedIconPath": "image/me_HL.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

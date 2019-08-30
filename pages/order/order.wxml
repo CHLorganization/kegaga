@@ -1,0 +1,214 @@
+<!--pages/order/order.wxml-->
+<view class='headerContent' wx:if="{{isFollow}}">
+  <view class='left'>
+    <view class='top' bindtap='onSelectShop'>
+      <text class='name'>大家好(香蜜湖店)</text>
+      <view class='drop'></view>
+    </view>
+    <view class='bottom'>
+      <image class='image' src='../../image/location.png' />
+      <view class='address'>深圳福田</view>
+      <view class='time' style='color:{{themeColor}}'>最快12:04送达</view>
+    </view>
+  </view>
+  <!--witch按钮-->
+  <view class="switch">
+    <view class='item' style="{{'background:'+themeColor+'; transform: translateX(' +(switchIndex * 114) + 'rpx)'}}"></view>
+    <radio-group class="switchAbsolute" name="switchIndex" bindchange="onSwitchTap">
+      <label class='item'>
+        <radio class="radio" value="0" />
+        <text class='text {{switchIndex == 0? "active":""}}'>自取</text>
+      </label>
+      <label class='item'>
+        <radio class="radio" value="1" />
+        <text class='text {{switchIndex == 1? "active":""}}'>外卖</text>
+      </label>
+    </radio-group>
+  </view>
+</view>
+<!-- 中间滚动区域 -->
+<view class="content-container" wx:if="{{isFollow}}">
+  <!-- 左边滚动 -->
+  <scroll-view class="classify-container" style='height:{{contentScrollViewHeight}}px' scroll-y scroll-into-view="classify{{classifyViewed}}">
+    <view class="classify {{classifyViewed==classify.id?'active':''}}" id='classify{{classify.id}}' wx:for="{{categories}}" wx:for-item="classify" wx:key="id" data-id="{{classify.id}}" bindtap="tapClassify">
+      <view class='dot' wx:if="{{classify.quantity > 0}}">{{classify.quantity}}</view>
+      <view class="name threeLines" style="{{classifyViewed==classify.id?'color:'+themeColor:''}}">{{classify.name}}</view>
+    </view>
+  </scroll-view>
+
+  <!-- 右边滚动 -->
+  <scroll-view class="goods-container" style='height:{{contentScrollViewHeight}}px' scroll-y bindscroll="scrollBind" scroll-into-view="goods{{goodsViewed}}">
+
+    <!-- 图片展示 -->
+    <view class='exhibition'>
+      <block wx:for="{{banners}}" wx:key="id">
+        <image class='image' mode="center" src="{{item.picUrl}}_m" />
+      </block>
+    </view>
+
+    <!-- 搜索 -->
+    <view class="serarch-content" bindtap='doSearch'>
+      <view class='search-icon-view'>
+        <image class='search-icon' src='../../image/search.png' />
+      </view>
+      <input placeholder="想吃啥就搜啥" class="search-input" disabled="{{true}}" />
+    </view>
+
+    <!-- 菜品分类item -->
+    <view class='goodsItemHeight' wx:for="{{goodsList}}" wx:for-item="goodsListCurrent" wx:for-index="classifyIndex" wx:key="id" id="goods{{goodsListCurrent.id}}" data-id="{{goodsListCurrent.id}}">
+      <!-- 菜品分类item的头部 -->
+      <view class="title">
+        {{goodsListCurrent.name}}
+      </view>
+      <!-- 单个菜品item -->
+      <view class="goods" wx:for="{{goodsListCurrent.goods}}" wx:key="id" wx:for-item="item" wx:for-index="itemIndex" data-id='{{item.id}}'>
+        <image class="pic" src="{{item.pic}}">
+          <view class='soldout' wx:if="{{item.numberOrders == 0}}">
+            <text class='text'>已售罄</text>
+          </view>
+        </image>
+        <view class='right'>
+          <view class='top'>
+            <view class="name twoLines">{{item.name}}</view>
+            <view class='desc singleLine'>时令季节的云南鲜笋，配上新西，配上新西，配上新西</view>
+          </view>
+          <view class='bottom'>
+            <view class='left'>
+              <view class='price'>￥{{item.minPrice}}</view>
+              <view class='tip' wx:if="{{item.numberOrders != 0}}">起</view>
+              <view class='tip line-through' wx:else>￥{{item.originalPrice}}</view>
+            </view>
+            <view class='bottomRight' wx:if="{{item.numberOrders != 0}}">
+              <image class='image' src='../../image/reduce_{{themeColorName}}.png' wx:if="{{item.quantity != 0}}" bindtap='onReduce' data-cindex='{{classifyIndex}}' data-iindex='{{itemIndex}}' />
+              <view class='text' wx:if="{{item.quantity != 0}}">{{item.quantity}}</view>
+              <image class='image' src='../../image/add_{{themeColorName}}.png' bindtap='onAdd' data-cindex='{{classifyIndex}}' data-iindex='{{itemIndex}}' />
+            </view>
+            <view class='multiple' style="background:{{themeColor}}" bindtap="showDialog" data-statu="open" wx:else>
+              <view class='dot' wx:if="{{item.quantity != 0}}">{{item.quantity}}</view>
+              <text class='text'>选规格</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+
+<!--选规格弹窗-->
+<view class="dialogMarsk" catchtap="showDialog" data-statu="close" wx:if="{{isDialogShow}}">
+  <!--dialog-->
+  <view class="dialog" catchtap='dialogCatchTap' animation="{{animationData}}">
+    <view class="dialogHeader">
+      <text class='text'>{{orderDetail.name}}</text>
+      <view class='close' catchtap="showDialog" data-statu="close">
+        <image class='image' src='../../image/close.png' />
+      </view>
+    </view>
+    <!-- 内容 -->
+    <view class="centerContent">
+      <view class='centerContentView'>
+        <!-- 做法 -->
+        <view class='centerItem' wx:if="{{orderDetail.cookMethod.length > 0}}">
+          <view class='name'>做法</view>
+          <view class='itemContent'>
+            <view class='itemView' style="{{item.sel? 'background:'+themeColorOpacity:''}}" wx:for="{{orderDetail.cookMethod}}" wx:key="id" catchtap='methodTap' data-index='{{index}}'>
+              <text class='itemName' style="{{item.sel? 'color:'+themeColor:''}}">{{item.name}}</text>
+            </view>
+          </view>
+        </view>
+        <!-- 多维度 -->
+        <view class='centerItem' wx:if="{{centerItem.value.length > 0}}" wx:for="{{orderDetail.attributes}}" wx:for-item="centerItem" wx:for-index="centerIndex" wx:key="id">
+          <view class='name'>{{centerItem.name}}</view>
+          <view class='itemContent'>
+            <view class='itemView' style="{{item.sel? 'background:'+themeColorOpacity:''}}" wx:for="{{centerItem.value}}" wx:key="id" catchtap='attributesTap' data-centerIndex='{{centerIndex}}' data-index='{{index}}'>
+              <text class='itemName' style="{{item.sel? 'color:'+themeColor:''}}">{{item.name}}</text>
+            </view>
+          </view>
+        </view>
+        <!-- 加料 -->
+        <view class='centerItem' wx:if="{{orderDetail.ingredient.length > 0}}">
+          <view class='name'>加料</view>
+          <view class='itemContent'>
+            <view class='itemView' style="{{item.sel? 'background:'+themeColorOpacity:''}}" wx:for="{{orderDetail.ingredient}}" wx:key="id" catchtap='ingredientTap' data-index='{{index}}'>
+              <text class='itemName' style="{{item.sel? 'color:'+themeColor:''}}">{{item.name}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 弹窗底部 -->
+    <view class="bottom">
+      <view class='left'>
+        <text class='price'>￥{{orderDetail.price}}</text>
+        <text class='tip singleLine'>低卡/小份/加热/微微辣/牛肉/大份大份的牛肉</text>
+      </view>
+      <view class='right' catchtap='onAdd' data-cindex='{{0}}' data-iindex='{{7}}'>
+        <text class='text'>加入购物车</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 购物车tabBar -->
+<view class='shoppingCartTab' wx:if="{{isShoppingCartTabShow}}">
+  <view class='content' bindtap='showShoppingCart'>
+    <view class='wrap'>
+      <image class='cartIcon' src='../../image/cart.png' />
+      <view class='dot'>{{shoppingCartListQuantity}}</view>
+    </view>
+    <view class='left'>
+      <view class='price'>￥536</view>
+      <view class='tip'>另需配送费￥5</view>
+    </view>
+  </view>
+  <view class='right' style='background:{{themeColor}}' bindtap='toSettlement'>
+    <text class='text'>去结算</text>
+  </view>
+</view>
+
+<!-- 购物车列表 -->
+<view class='shoppingCart' wx:if='{{isShoppingCartShow}}'>
+  <view class='marskPlaceHolder' catchtap='showShoppingCart'></view>
+  <view class='shoppingCartList' animation="{{animationData}}">
+    <view class='header'>
+      <text>已选商品</text>
+      <view class='right' catchtap='emptyShoppingCart'>
+        <image class='image' src='../../image/empty.png' />
+        <text>清空购物车</text>
+      </view>
+    </view>
+    <view class='list'>
+      <view class='listView'>
+        <view class='item' wx:for='{{shoppingCartList}}' wx:key="id">
+          <view class='top'>
+            <view class='desc'>
+              <view class='name singleLine'>{{item.data.name}}</view>
+              <view class='tip singleLine'>鲜笋炖肉+时令蔬菜（大份很长很长很长)</view>
+            </view>
+            <text class='price'>￥{{item.data.minPrice}}</text>
+            <view class='operate'>
+              <image class='but' src='../../image/reduce_{{themeColorName}}.png' hidden='{{!item.data.quantity}}' bindtap='onReduce' data-cindex='{{item.cindex}}' data-iindex='{{item.iindex}}' />
+              <text class='text' hidden='{{!item.data.quantity}}'>{{item.data.quantity}}</text>
+              <image class='but' src='../../image/add_{{themeColorName}}.png' hidden='{{!item.data.quantity}}' bindtap='onAdd' data-cindex='{{item.cindex}}' data-iindex='{{item.iindex}}' />
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='tabPlaceHolder'></view>
+</view>
+
+<!-- 关注门店 -->
+<view class='followContainer' wx:if="{{!isFollow}}">
+  <image class='img' src='../../image/food.png' />
+  <text class='name'>gaga鲜语深圳书城店</text>
+  <text class='desc'>目前离您最近的门店为“许留山深圳书城店”，关注门店我们将优先推荐与该门店相关的优惠活动哦！</text>
+  <view class="btnArea">
+    <!-- <button type="primary" style="background-color:{{themeColor}}" bindtap="onFollow">关注门店</button> -->
+    <button  open-type="getUserInfo" bindgetuserinfo="onFollow" type="primary" style="background-color:{{themeColor}}">授权登录</button>
+    <!-- <button  open-type="getPhoneNumber" bindgetphonenumber="onFollow">关注门店</button> -->
+  </view>
+  <text class='chooseOther' bindtap="onFollowOther">选择其他门店</text>
+</view>

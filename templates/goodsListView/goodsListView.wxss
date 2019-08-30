@@ -1,0 +1,134 @@
+/* templates/goodsListView/goodsListView.wxss */
+
+.goodsListView{
+  width: 100%;
+  padding: 24rpx 42rpx 0;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 1px 0px 0px rgba(210,210,210,0.5);
+}
+
+.header{ 
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+}
+
+.body{
+  width: 100%;
+  padding: 22rpx 0;
+}
+
+.goodsItem{
+  height: 94rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28rpx;
+}
+.goodsItem .goodsImg{
+  width: 96rpx;
+  height: 94rpx;
+}
+.goodsItem .goodsInfo{
+  height: 100%;
+  width: 42%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.goodsItem .goodsInfo .goodsName{
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(3,3,3,1);
+}
+.goodsItem .goodsInfo .subtext{
+  font-size:20rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+}
+.goodsItem .num{
+  width: 5%;
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(3,3,3,1);
+}
+.goodsItem .discount{
+  width: 10%;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  text-decoration:line-through;
+}
+.goodsItem .money{
+  width: 10%;
+  font-size:28rpx;
+  font-family:PingFangSC-Medium;
+  font-weight:500;
+  color:rgba(3,3,3,1);
+}
+
+.surCharge{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10rpx
+}
+.surCharge .info{
+  display: flex;
+  background:rgba(88,198,62,0.15);
+  border-radius:1px;
+  border:1px solid rgba(88,198,62,0.3);
+  padding: 2rpx 6rpx;
+}
+.surCharge .info .img{
+  height: 24rpx;
+  width: 24rpx;
+}
+.surCharge .info .name{
+  font-size:20rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(88,198,62,1);
+}
+.surCharge .money{
+  font-size:28rpx;
+  font-family:PingFangSC-Medium;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+}
+
+.footer{
+  width: 100%;
+}
+.footerLine{
+  width: 100%;
+  height:4rpx;
+  border:2rpx solid rgba(250,248,248,1);
+}
+.total{
+  width: 100%;
+  height: 96rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+}
+.total .preferential .money{
+  color:#ff4c3c;
+}
+.total .totalMoney .money{
+  font-size:36rpx;
+  font-family:PingFangSC-Semibold;
+  font-weight:600;
+  color:rgba(51,51,51,1);
+}

@@ -1,0 +1,120 @@
+/* pages/points/points.wxss */
+
+.pointHeader {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 10rpx solid #fff1f1f1;
+  padding: 2rpx 42rpx 70rpx;
+  position: relative;
+}
+
+.pointHeader .num {
+  font-size: 40rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 56rpx;
+}
+
+.pointHeader .bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 6rpx;
+}
+
+.pointHeader .bottom .pointText {
+  font-size: 40rpx;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(3, 3, 3, 1);
+  line-height: 56rpx;
+}
+
+.pointHeader .bottom .pointRule {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 34rpx;
+}
+
+.pointRecord {
+  width: 198rpx;
+  height: 78rpx;
+  border-radius: 0rpx 200rpx 200rpx 0rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 40rpx;
+  position: absolute;
+  left: 0;
+  bottom: -39rpx;
+}
+
+.scView {
+  box-sizing: border-box;
+  padding-top: 44rpx;
+}
+
+.placeHolderView {
+  height: 44rpx;
+}
+
+.dataItemContent {
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx 42rpx 20rpx 52rpx;
+}
+
+.dataItemContent .top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  line-height: 40rpx;
+}
+
+.dataItemContent .bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.dataItemContent .bottom .left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 28rpx;
+}
+
+.dataItemContent .bottom .pointsNum {
+  font-size: 40rpx;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(3, 3, 3, 1);
+  line-height: 56rpx;
+}
+
+.noData {
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 40rpx;
+  text-align: center;
+  padding-top: 210rpx;
+}

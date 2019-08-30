@@ -1,0 +1,21 @@
+<!--components/modal.wxml-->
+<view class="marsk" wx:if="{{show}}">
+  <!--dialog-->
+  <view class="modal-content">
+    <view class="title">
+      <text style="font-size:24px;">柠檬罗勒酸汤面</text>
+    </view>
+
+    <view class="main-content">
+      <view wx:for="{{dialogData}}" class="appreciationTable">
+        <view class="unitItemLeft">
+          <text class="baseItemWithBorder">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="title">
+      <text style="font-size:24px;">柠檬罗勒酸汤面</text>
+    </view>
+  </view>
+</view>

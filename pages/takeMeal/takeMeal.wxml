@@ -1,0 +1,139 @@
+<!--pages/takeMeal/takeMeal.wxml-->
+
+
+  <view class="orderTab">
+    <!-- <view class="orderTabBtn {{orderType===0?'active':''}}"
+     bindtap="changeOrderType" data-index="{{0}}">{{sText.currentOrder}}</view>
+    <view class="orderTabBtn {{orderType===1?'active':''}}"
+     bindtap="changeOrderType" data-index="{{1}}">{{sText.historyOrder}}</view> -->
+
+    <radio-group class="radio-group" name="orderType" bindchange="changeOrderType">
+      <label class="orderTabBtn  {{orderType===0?'active':''}}">
+        <radio class="radio" value="0" />
+        <text>{{sText.currentOrder}}</text>
+      </label>
+      <label class="orderTabBtn {{orderType===1?'active':''}}">
+        <radio class="radio" value="1" />
+        <text>{{sText.historyOrder}}</text>
+      </label>
+    </radio-group>
+  </view>
+
+  <scroll-view class="takeMealBody" style='height:{{contentScrollViewHeight}}px' scroll-y>
+    <!--当前订单-->
+    <view class="order" wx:if="{{orderType===0}}" wx:for="{{orderLists}}" wx:for-index="orderIndex" wx:for-item="currentOrder_detail" wx:key="orderIndex" data-thisorder="{{currentOrder_detail}}" bindtap="toOrderDetail">
+    <!-- 进度条 -->
+      <view class="processContainer">
+        <view wx:if="{{currentOrder_detail.process<3}}" class="processContainer_process">
+          <view wx:for="{{currentOrder_detail.type===0?sText.eatInside_Process:sText.waimai_Process}}" class="process_item item{{index}} {{currentOrder_detail.process>=index?'active':''}} {{(currentOrder_detail.process>index)&&(index<2)?'arrow':''}}" style="box-shadow: {{ currentOrder_detail.process>index ? '':'4rpx 0 4rpx 0 rgba(0,0,0,0.1)'}}"
+            wx:key="index">
+            <image wx:if="{{index===0}}" class="img" src="../../image/madeOrder.png" /> {{item}}
+          </view>
+        </view>
+        
+        <view wx:elif="{{currentOrder_detail.process===3}}" class="processContainer_finish">
+          <view class="orderTime">
+            <image class="img" src="../../image/tangshiFinish.png" />
+            <text>{{currentOrder_detail.orderDate}}</text>
+          </view>
+          <view class="finalProcess">
+            <image class="img" src="../../image/orderFinish.png" />
+            <text>{{currentOrder_detail.type===0?sText.tokenMeal:sText.havenReach}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="orderBody">
+        <view class="shop">
+          <view class="imgView">
+            <image class="img" src="{{currentOrder_detail.shop.imgUrl}}" />
+          </view>
+          <view class="shopInfo">
+            <view class="shopName">{{currentOrder_detail.shop.shopName}}</view>
+            <view class="shopAddress">
+              <image class="img" src="../../image/addressIcon.png" /> {{currentOrder_detail.shop.address}}
+            </view>
+          </view>
+          <view wx:if="{{(currentOrder_detail.type===1)&&(currentOrder_detail.process!==3)}}" class="iconText iconText_waimai">
+            {{sText.willReachTime[0]}}{{currentOrder_detail.willReachTime}}{{sText.willReachTime[1]}}
+          </view>
+          <view wx:if="{{currentOrder_detail.process===3}}" class="iconText">
+            {{sText.refund}}没做完
+          </view>
+        </view>
+        <scroll-view class="goodsImgView" scroll-x >
+          <image wx:for="{{currentOrder_detail.goodsList}}" class="goodsImg" src="{{item.img}}" wx:for-index="imgIndex" wx:key="imgIndex" />
+        </scroll-view>
+        <view class="goodsSubtext">
+          <view class="content">
+            {{currentOrder_detail.goodsList[0].name}}{{sText.goodsSubtext[0]}}{{currentOrder_detail.num}}{{sText.goodsSubtext[1]}}
+          </view>
+          <view class="money">
+            {{sCommon.currencySign}} {{currentOrder_detail.total}}
+          </view>
+        </view>
+        <view class="footer">
+          <view wx:if="{{currentOrder_detail.type===0}}" class="foodsNum">{{sText.takeNum}}{{currentOrder_detail.takeNum}}</view>
+          <view wx:else class="foodsNum">
+            <view class="address">
+              {{currentOrder_detail.customerData.address}}
+            </view>
+            <view class="customer">
+              {{currentOrder_detail.customerData.name}} {{currentOrder_detail.customerData.phone}}
+            </view>
+          </view>
+          <view class="buttonPart">
+            <view wx:if="{{currentOrder_detail.process<=1}}" class="footerBtn" bindtap="cancelOrder">
+              {{sText.cancelOrder}}
+            </view>
+            <view wx:elif="{{currentOrder_detail.process===2 && currentOrder_detail.type===1 }}" class="footerBtn">
+              {{sText.confirmReach}}
+            </view>
+            <view wx:elif="{{currentOrder_detail.process===3}}" class="footerBtn">
+              {{sText.againlOrder}}
+            </view>
+            <view class="footerBtn">
+              {{sText.contactShop}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!--历史订单-->
+    <view class="historyOrder" wx:if="{{orderType===1}}" wx:for="{{orderLists}}" wx:for-index="orderIndex" wx:for-item="currentOrder_detail" wx:key="orderIndex">
+      <view class="header">
+        <view>
+          <text class="shop">{{currentOrder_detail.shop.shopName}}</text>
+          <text class="orderTime">{{currentOrder_detail.orderDate}}</text>
+        </view>
+        <view class="orderProcess">
+          {{currentOrder_detail.finalProcess}}
+          <image class="img" src="../../image/goto.png" />
+        </view>
+
+      </view>
+      <view class="goodsImgView">
+        <image wx:for="{{currentOrder_detail.goodsList}}" class="goodsImg" src="{{item.img}}" wx:for-index="imgIndex" wx:key="imgIndex" />
+      </view>
+      <view class="goodsSubtext">
+        <view class="content">
+          {{currentOrder_detail.goodsList[0].name}}{{sText.goodsSubtext[0]}}{{currentOrder_detail.num}}{{sText.goodsSubtext[1]}}
+        </view>
+        <view class="money">
+          {{sCommon.currencySign}} {{currentOrder_detail.total}}
+        </view>
+      </view>
+      <view class="footer">
+        <view class="buttonPart">
+          <image class="img" src="{{currentOrder_detail.type===0?'../../image/takeMyself.png':'../../image/waimaiSong.png'}}" />
+          <view class="footerBtn">
+            {{sText.againlOrder}}
+          </view>
+          <view class="footerBtn" data-thisorder="{{currentOrder_detail}}" bindtap="toOrderDetail">
+            {{sText.readDetail}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>

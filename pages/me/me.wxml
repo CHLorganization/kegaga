@@ -1,0 +1,66 @@
+<view class='userHeader'>
+  <view class='left'>
+    <image class='avatar' src='../../image/food.png' />
+    <view class='nameContainer'>
+      <text class='userName'>Irislee</text>
+      <text class='growthValue'>成长值：360</text>
+    </view>
+    <view class='memberType'>白银会员</view>
+  </view>
+  <image class='qrCode' src='../../image/qrCode.png' />
+</view>
+
+<!-- 余额，积分，券 -->
+<view class='balanceContainer'>
+  <view class='box' bindtap='toBalance'>
+    <view class='balance'>
+      <text class='num'>20.00</text>
+      <text class='text'>余额</text>
+    </view>
+    <view style='flex:1' />
+  </view>
+  <view class='dividerLine' />
+  <view class='box' bindtap='toPoints'>
+    <view class='points'>
+      <text class='num'>82</text>
+      <text class='text'>积分</text>
+    </view>
+  </view>
+  <view class='dividerLine' />
+  <view class='box' bindtap='toCouponTable'>
+    <view style='flex:1' />
+    <view class='voucher'>
+      <text class='num'>10</text>
+      <text class='text'>券</text>
+    </view>
+  </view>
+</view>
+<!-- 会员充值、会员权益 -->
+<view class='member'>
+  <view class='box' bindtap='toRecharge'>
+    <image class='imgL' src='../../image/recharge.png' />
+    <text class='text'>会员充值</text>
+  </view>
+  <view class='box' bindtap='toRights'>
+    <image class='imgR' src='../../image/rights.png' />
+    <text class='text'>会员权益</text>
+  </view>
+</view>
+
+<!-- 修改资料 -->
+<view class='modifyData'>资料修改</view>
+
+<view class='dataItemContent' bindtap='toChangeInfo'>
+  <text class='text'>我的信息</text>
+  <image class='arrow' src='../../image/arrowRight.png' />
+</view>
+
+<view class='dataItemContent' bindtap='toManageAddress'>
+  <text class='text'>地址管理</text>
+  <image class='arrow' src='../../image/arrowRight.png' />
+</view>
+
+<view class='dataItemContent' bindtap='toChangePwd'>
+  <text class='text'>修改密码</text>
+  <image class='arrow' src='../../image/arrowRight.png' />
+</view>
