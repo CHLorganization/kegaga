@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 18,
+			"current": 19,
 			"list": [
 				{
 					"id": -1,
@@ -171,6 +171,13 @@
 					"id": -1,
 					"name": "申请退款",
 					"pathName": "pages/refund/refund",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "会员权益",
+					"pathName": "pages/memberRights/memberRights",
 					"query": "",
 					"scene": null
 				}

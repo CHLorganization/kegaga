@@ -40,7 +40,9 @@ Page({
   },
 
   toRights(){
-
+    wx.navigateTo({
+      url: '../memberRights/memberRights',
+    })
   },
 
 // 券

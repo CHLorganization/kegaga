@@ -18,7 +18,8 @@
     "pages/couponTable/couponTable",
     "pages/changePassword/changePassword",
     "pages/changeMyInfo/changeMyInfo",
-    "pages/recharge/recharge"
+    "pages/recharge/recharge",
+    "pages/memberRights/memberRights"
   ],
   "window": {
     "backgroundTextStyle": "light",
