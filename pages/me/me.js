@@ -1,4 +1,6 @@
 let app = getApp();
+var util = require("../../utils/util.js");
+var urlUtil = require("../../utils/urlUtil.js");
 let that = {};
 Page({
 
@@ -18,10 +20,24 @@ Page({
     })
   },
 
+// 获取用户信息
+  getData(){
+    const url = urlUtil.findMemberWithAssets(url.getBrandId(), url.getMemberId());
+    util.request(url).then(res => {
+      if (res.rtnCode === 10000) {
+        console.log("获取用户信息,res=", res);
+      } else {
+        util.showToast('获取用户信息失败！');
+      }
+    }).catch(err => {
+      util.showToast('获取用户信息失败！');
+    });
+  },
+
   // 余额
   toBalance() {
     wx.navigateTo({
-      url: '../points/points',
+      url: '../balance/balance',
     })
   },
 

@@ -24,7 +24,7 @@
   </radio-group>
   <!-- </view> -->
 
-  <swiper class='contain' current='{{currentTab}}' duration="300 " bindchange="bindChange ">
+  <swiper class='contain' current='{{currentTab}}' duration="300" bindchange="bindSwiperChange">
     <!-- 可用 -->
     <swiper-item class='swiper-item-1'>
       <!-- 未使用 -->

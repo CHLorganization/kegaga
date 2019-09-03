@@ -3,7 +3,7 @@
 <view class="recharge-card">
   <image class='image' src='../../image/rechargeCard.png' mode="scaleToFill">
     <view class='member-type'>
-      <image class='image' src='../../image/memberType.png' mode="scaleToFill"/>
+      <image class='image' src='../../image/memberType.png' mode="scaleToFill" />
       <text class='type'>黄金会员</text>
     </view>
   </image>
@@ -18,27 +18,31 @@
   <radio-group class="radio-group" name="recharge" bindchange="onChangeRecharge">
     <label class='amount' style="{{recharge === '0'? 'background:#fff'+';color:'+themeColor+';border-color:'+themeColor:''}}">
       <radio class="radio" value="0" />
-      <text>10元</text>
+      <text class="top">10元</text>
     </label>
     <label class='amount' style="{{recharge === '1'? 'background:#fff'+';color:'+themeColor+';border-color:'+themeColor:''}}">
       <radio class="radio" value="1" />
-      <text>20元</text>
+      <text class="top">20元</text>
     </label>
     <label class='amount' style="{{recharge === '2'? 'background:#fff'+';color:'+themeColor+';border-color:'+themeColor:''}}">
       <radio class="radio" value="2" />
-      <text>50元</text>
+      <text class="top">50元</text>
+      <text class="bottom">送5元</text>
     </label>
     <label class='amount' style="{{recharge === '3'? 'background:#fff'+';color:'+themeColor+';border-color:'+themeColor:''}}">
       <radio class="radio" value="3" />
-      <text>100元</text>
+      <text class="top">100元</text>
+      <text class="bottom">送10元</text>
     </label>
     <label class='amount' style="{{recharge === '4'? 'background:#fff'+';color:'+themeColor+';border-color:'+themeColor:''}}">
       <radio class="radio" value="4" />
-      <text>200元</text>
+      <text class="top">200元</text>
+      <text class="bottom">送22元</text>
     </label>
     <label class='amount' style="{{recharge === '5'? 'background:#fff'+';color:'+themeColor+';border-color:'+themeColor:''}}">
       <radio class="radio" value="5" />
-      <text>500元</text>
+      <text class="top">500元</text>
+      <text class="bottom">送60元</text>
     </label>
   </radio-group>
 
@@ -46,7 +50,7 @@
 
 <view class='gift-content'>赠送内容</view>
 <view class='gift-text-content'>
-<view class='item' wx:for='{{gitData}}'>-{{item}}</view>
+  <view class='item' wx:for='{{gitData}}' wx:key="unique">-{{item}}</view>
 </view>
 
 <!-- 占位：支付bar -->

@@ -1,6 +1,8 @@
 //app.js
 const util = require('./utils/util.js');//工具类
+const urlUtil = require("./utils/urlUtil.js");
 const translate = require('./utils/translate.js');//翻译工具类
+const storageUtil = require("./utils/storageUtil.js");
 
 wx.translate = translate.translate;//国际化方法(到时候这要放到从后台读取得请求里)
 wx.themeSkin = '#58C63E';//全局主题色(到时候这要放到从后台读取得请求里)
@@ -14,28 +16,19 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    util.login();
+    //检查session过期 并登陆
+    util.checkSession().then(()=>{
+      that.globalData.openId = wx.getStorageSync(storageUtil.login)//获取openId
+    }).catch(() => {
+      util.login().then(res=>{
+        storageUtil.setStorage(storageUtil.login, res);
+        that.globalData.openId = res;//保存openId
+      }).catch(err=>{
 
-    // wx.request({
-    //   url: 'https://api.sanyitest.com/linker/gateway?method=WxMiniApp.SignUp&id=123',
-    //   method: "POST",
-    //   data: {
-    //     code: "081BZoOm0bS7ol1z0aQm0S1bOm0BZoOH",
-    //     appId: "wxb1fc6145dae64515",
-    //   },
-    //   success: res => {
-    //     console.log("login,success res= ", res);
-    //   },
-    //   fail: res => {
-    //     console.log("login,fail res= ", res);
-    //   }
-    // })
+      });
+    });
 
-    // wx.login({
-    //   success: res => {
-    //     console.log("login,success res= ", res);
-    //   }
-    // })
+    that.getBrandInfo();// 根据appId查询品牌信息
 
     // 获取用户信息
     wx.getSetting({
@@ -57,6 +50,26 @@ App({
         }
       }
     })
+  },
+
+  // 根据appId查询品牌信息
+  getBrandInfo() {
+    const that = this;
+    const url = urlUtil.get_brandinfo_by_appid;
+    let body = {
+      "appType": "wechatMiniProgramAppId"
+    }
+    body.appId = util.getAppId();
+    util.request(url, body, "POST").then(res => {
+      console.log("查询品牌信息,res=", res);
+      if (res.rtnCode === 10000) {
+        that.globalData.brandId = res.data.brandId
+      } else {
+        util.showToast('查询品牌信息失败！');
+      }
+    }).catch(err => {
+      util.showToast('查询品牌信息失败！');
+    });
   },
 
   // lazy loading openid
@@ -97,5 +110,7 @@ App({
     themeColor: "#74C2C8" /*主题颜色*/ ,
     subDomain: "tggtest",
     appId:"wxb1fc6145dae64515",
+    brandId:-1,
+    openId:-1,
   }
 })

@@ -207,7 +207,7 @@
   <text class='desc'>目前离您最近的门店为“许留山深圳书城店”，关注门店我们将优先推荐与该门店相关的优惠活动哦！</text>
   <view class="btnArea">
     <!-- <button type="primary" style="background-color:{{themeColor}}" bindtap="onFollow">关注门店</button> -->
-    <button  open-type="getUserInfo" bindgetuserinfo="onFollow" type="primary" style="background-color:{{themeColor}}">授权登录</button>
+    <button  open-type="getUserInfo" bindgetuserinfo="onFollow" type="primary" style="background-color:{{themeColor}}">关注门店</button>
     <!-- <button  open-type="getPhoneNumber" bindgetphonenumber="onFollow">关注门店</button> -->
   </view>
   <text class='chooseOther' bindtap="onFollowOther">选择其他门店</text>

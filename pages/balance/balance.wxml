@@ -1,15 +1,21 @@
 <!--pages/points/points.wxml-->
 <view class='pointHeader'>
-  <text class='num'>28</text>
+  <view class="top">
+    <view class="left">
+      <text class="num">28.00</text>
+      <text class="text">当前余额</text>
+    </view>
+    <view class="right"  bindtap='toRecharge'>我要充值</view>
+  </view>
   <view class='bottom'>
-    <text class='pointText'>当前积分</text>
-    <text class='pointRule'>积分规则</text>
+    <text class='pointRule'>储值金额：20.00</text>
+    <text class='pointRule'>储值奖励：8.00</text>
   </view>
   <!-- <view class='pointRecord' style='background:{{themeColor}}'>积分记录</view> -->
 </view>
 
 <scroll-view class='scView' scroll-y style="height: {{contentScrollViewHeight}}px;">
-  <view class="dataItemTitle" style='color:{{themeColor}}'>积分记录</view>
+  <view class="dataItemTitle" style='color:{{themeColor}}'>余额记录</view>
   <view class="dataItemContent" wx:key="id" wx:for="{{20}}" wx:if='{{true}}'>
     <view class='top'>
       <text>{{pointData.name}}</text>

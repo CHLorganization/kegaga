@@ -1,0 +1,15 @@
+<!--start.wxml-->
+<!-- 关注门店 -->
+<view class='followContainer' wx:if="{{!isFollow}}">
+  <image class='img' src='../../image/food.png' />
+  <text class='name'>gaga鲜语深圳书城店</text>
+  <text class='desc'>目前离您最近的门店为“许留山深圳书城店”，关注门店我们将优先推荐与该门店相关的优惠活动哦！</text>
+  <view class="btnArea">
+    <!-- <button type="primary" style="background-color:{{themeColor}}" bindtap="onFollow">关注门店</button> -->
+    <button  open-type="getUserInfo" bindgetuserinfo="getUserInfo" type="primary" style="background-color:{{themeColor}}">获取信息</button>
+  </view>
+  <view class="btnArea">
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+  </view>
+  <text class='chooseOther' bindtap="onFollowOther">选择其他门店</text>
+</view>

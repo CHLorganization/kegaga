@@ -1,3 +1,4 @@
+var app = getApp();
 const urlUtil = require("./urlUtil.js");
 const storageUtil = require("./storageUtil.js");
 
@@ -32,16 +33,16 @@ module.exports = {
           'Content-Type': 'application/json',
         },
         success(res) {
-          console.log("success");
-          if (res.statusCode == 200) {
-            resolve(res);
+          console.log("request success", res);
+          if (res.statusCode === 200) {
+            resolve(res.data);
           } else {
             reject(res);
           }
         },
         fail(err) {
           reject(err)
-          console.log("request failed")
+          console.log("request failed, err=", err)
         }
       })
     });
@@ -51,41 +52,47 @@ module.exports = {
   // 检查登录态是否过期，过期重新登录
   checkSession() {
     const that = this
-    wx.checkSession({
-      success() {
-        //session_key 未过期，并且在本生命周期一直有效
-        console.log('checkSession  success')
-      },
-      fail() {
-        // session_key 已经失效，需要重新执行登录流程
-        that.login()
-      }
-    })
+    return new Promise((resolve, reject) => {
+      wx.checkSession({
+        success() {
+          //session_key 未过期，并且在本生命周期一直有效
+          console.log('checkSession  success')
+          resolve();
+        },
+        fail() {
+          // session_key 已经失效，需要重新执行登录流程
+          reject()
+        }
+      })
+    });
   },
 
   login() {
     const that = this
-    wx.login({
-      success: res => {
-        if (res.code) {
-          //发起网络请求
-          that.request(urlUtil.login, {
-            code: res.code,
-            appId: that.getAppId()
-          }, "POST").then(res => {
-            console.log("login res", res);
-            console.log("login res.data", res.data);
-            const data = res.data;
-            storageUtil.setStorage(storageUtil.login, data);
-          }).catch(err => {
-            that.login();
-            console.log("login,success fail res= ", res.data.message);
-          });
-        } else {
-          console.log('登录失败！' + res.errMsg)
-          that.login();
+    return new Promise((resolve, reject) => {
+      wx.login({
+        success: res => {
+          if (res.code) {
+            //发起网络请求
+            that.request(urlUtil.login, {
+              code: res.code,
+              appId: that.getAppId()
+            }, "POST").then(res => {
+              console.log("login res", res);
+              // storageUtil.setStorage(storageUtil.login, res);
+              // app.globalData.openId = res;//保存openId
+              // console.log("login app.globalData.openId", app.globalData.openId);
+              resolve(res);
+            }).catch(err => {
+              console.log("login,success fail res= ", res.message);
+              resolve(err);
+            });
+          } else {
+            console.log('登录失败！' + res.errMsg)
+            resolve(res.errMsg);
+          }
         }
-      }
+      })
     })
   },
 
@@ -101,6 +108,16 @@ module.exports = {
     } catch (e) {
       console.log("util->getAppId:", e)
     }
+  },
+
+// 获取门店id
+  getBrandId(){
+    return 1;
+  },
+
+// 获取会员id
+  getMemberId() {
+    return 1;
   },
 
   //返回屏幕高度
@@ -130,6 +147,22 @@ module.exports = {
     })
   },
 
+// toast
+  showToast(text) {
+    wx.showToast({
+      title: text,
+      icon: 'none',
+    })
+  },
+
+  /**获取用户信息 */
+  getUserInfo(callBack){
+    
+  },
+
+  /**获取用户信息 */
+
+// 获取位置信息
   getUserLocation(callBack) {
     const that = this
     wx.getSetting({
