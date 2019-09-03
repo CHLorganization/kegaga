@@ -174,10 +174,17 @@
 					"query": "",
 					"scene": null
 				},
+          {
+            "id": -1,
+            "name": "余额",
+            "pathName": "pages/balance/balance",
+            "query": "",
+            "scene": null
+          },
 				{
 					"id": -1,
-					"name": "余额",
-					"pathName": "pages/balance/balance",
+					"name": "会员权益",
+					"pathName": "pages/memberRights/memberRights",
 					"query": "",
 					"scene": null
 				}

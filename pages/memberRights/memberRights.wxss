@@ -1,0 +1,8 @@
+/* pages/memberRights/memberRights.wxss */
+.userHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12rpx 60rpx 12rpx 48rpx;
+}
