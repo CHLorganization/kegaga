@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/start/start",
     "pages/order/order",
     "pages/takeMeal/takeMeal",
     "pages/me/me",
@@ -15,6 +16,7 @@
     "pages/orderDetail/orderDetail",
     "pages/refund/refund",
     "pages/points/points",
+    "pages/balance/balance",
     "pages/couponTable/couponTable",
     "pages/changePassword/changePassword",
     "pages/changeMyInfo/changeMyInfo",

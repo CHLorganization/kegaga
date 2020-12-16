@@ -1,5 +1,7 @@
 // pages/changeMyInfo/changeMyInfo.js
 var app = getApp();
+var util = require("../../utils/util.js");
+var urlUtil = require("../../utils/urlUtil.js");
 var item = {};
 Page({
 
@@ -50,6 +52,19 @@ Page({
 
   },
 
+  getInfo(){
+    const url = urlUtil.findMemberWithAssets(url.getBrandId(), url.getMemberId());
+    util.request(url).then(res=>{
+      if (res.rtnCode === 10000) {
+        console.log("getInfo,res=", res);
+      } else {
+        util.showToast('获取用户信息失败！');
+      }
+    }).catch(err=>{
+      util.showToast('获取用户信息失败！');
+    });
+  },
+
   // 修改性别
   onChangeGender(e) {
     this.setData({
@@ -76,29 +91,52 @@ Page({
     });
   },
 
-
+// 修改提交
   formSubmit(e) {
     var that = this;
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     var value = e.detail.value;
     if (!value.name) {
-      that.showToast('请填写姓名');
+      util.showToast('请填写姓名');
     } else if (!value.phone) {
-      that.showToast('请填写手机号');
+      util.showToast('请填写手机号');
     } else if (!value.birthday) {
-      that.showToast('请填写生日');
+      util.showToast('请填写生日');
+    }else{
+      const url = urlUtil.update_member;
+      let body = {
+        "id": 1,
+        "name": "斯蒂芬斯蒂芬斯蒂芬",
+        "nickname": "彩虹开发",
+        "password": "123456",
+        "gender": "male",
+        "brandId": 1,
+        "memberSettingBaseId": 1,
+        "currentMemberCardId": 1,
+        "currentMemberCardSn": "001"
+      };
+
+      body.id = url.getMemberId();
+      body.name = value.name;
+      body.nickname = value.name;
+      body.gender = value.gender;
+
+      util.request(url, body, "POST").then(res => {
+        if (res.rtnCode === 10000) {
+          console.log("getInfo,res=", res);
+          wx.navigateBack({
+            delta: 1
+          })
+          util.showToast('修改用户信息成功！');
+        } else {
+          util.showToast('修改用户信息失败！');
+        }
+      }).catch(err => {
+        util.showToast('修改用户信息失败！');
+      });
     }
-    wx.navigateBack({
-      delta: 1
-    })
   },
 
-  showToast(text) {
-    wx.showToast({
-      title: text,
-      icon: 'none',
-    })
-  },
 
   /**
    * 用户点击右上角分享

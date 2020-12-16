@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    recharge: '0',// 选择充值金额
+    recharge: '0',// 选择充值金额选项
     gitData: gitData
   },
 
@@ -15,6 +15,12 @@ Page({
     that.setData({
       themeColor: app.globalData.themeColor,
     });
+    that.getRechargeData();
+  },
+
+// 获取展示的充值数据
+  getRechargeData(){
+
   },
 
   // 选择充值金额
@@ -22,6 +28,11 @@ Page({
     this.setData({
       recharge: e.detail.value,
     });
+  },
+
+//支付
+  onPay(){
+    console.log("onPay", this.data.recharge)
   },
 })
 

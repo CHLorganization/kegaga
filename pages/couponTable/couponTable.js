@@ -1,6 +1,7 @@
 // pages/couponTable/couponTable.js
 var app = getApp();
 var util = require("../../utils/util.js");
+var urlUtil = require("../../utils/urlUtil.js");
 Page({
 
   /**
@@ -34,6 +35,20 @@ Page({
     });
   },
 
+// 获取优惠券信息
+  getData(){
+    const url = urlUtil.findMemberWithCoupon(url.getBrandId(), url.getMemberId());
+    util.request(url).then(res => {
+      if (res.rtnCode === 10000) {
+        console.log("获取优惠券信息,res=", res);
+      } else {
+        util.showToast('获取优惠券信息失败！');
+      }
+    }).catch(err => {
+      util.showToast('获取优惠券信息失败！');
+    });
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -59,9 +74,10 @@ Page({
     });
   },
 
-  bindChange: function (e) {
+  bindSwiperChange(e) {
+    console.log("bindSwiperChange", e);
     this.setData({
-      currentTab: e.detail.current
+      currentTab: parseInt(e.detail.current)
     })
   },
 

@@ -27,21 +27,12 @@ Page({
     that.getScrollViewHeight();
   },
 
-  // 获取当前积分数据
-  getData() {
-    const url = urlUtil.pointsChange(url.getBrandId(), url.getMemberId());
-    util.request(url).then(res => {
-      if (res.rtnCode === 10000) {
-        console.log("获取用户信息,res=", res);
-      } else {
-        util.showToast('获取用户信息失败！');
-      }
-    }).catch(err => {
-      util.showToast('获取用户信息失败！');
-    });
+// 获取当前余额数据
+  getData(){
+
   },
 
-// 获取滚动区域高度
+  // 获取滚动区域高度
   getScrollViewHeight(){
     var query = wx.createSelectorQuery();
     query.select('.pointHeader').boundingClientRect();
@@ -56,6 +47,13 @@ Page({
         console.log('getScrollViewHeight', that.data.contentScrollViewHeight);
       });
     });
+  },
+
+// 我要充值
+  toRecharge(){
+    wx.navigateTo({
+      url: '../recharge/recharge',
+    })
   },
 
 })

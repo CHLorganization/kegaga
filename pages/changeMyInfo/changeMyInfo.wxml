@@ -13,11 +13,11 @@
     <view class='leftContainer' />
     <radio-group class="radio-group" name="gender" bindchange="onChangeGender">
       <label class='gender' style="{{gender == '0'? 'background:'+themeColor+';color:#FFFFFF':''}}">
-        <radio class="radio" value="0" />
+        <radio class="radio" value="0" checked="{{gender === '0'}}"/>
         <text>先生</text>
       </label>
       <label class='gender margin-left' style="{{gender == '1'? 'background:'+themeColor+';color:#FFFFFF':''}}">
-        <radio class="radio" value="1" />
+        <radio class="radio" value="1" checked="{{gender === '1'}}"/>
         <text>女士</text>
       </label>
     </radio-group>
